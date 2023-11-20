@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('house_address');
             $table->integer('total_flat');
             $table->integer('total_floor');
+            $table->string('image');
             $table->timestamps();
         });
     }

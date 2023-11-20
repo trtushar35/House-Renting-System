@@ -1,8 +1,8 @@
-@extends('master')
+@extends('backend.master')
 
 @section('content')
 
-<form action="{{route('house.store')}}" method="post">
+<form action="{{route('house.store')}}" method="post" enctype="multipart/form-data">  
     @csrf
   <div class="form-row">
     <div class="col-md-4 mb-3">
@@ -44,6 +44,15 @@
       <label for="validationDefault01">Total Flat</label>
       <input type="text" class="form-control" id="validationDefault01" placeholder="Total Flat" name="total_flat" required>
       @error('total_flat')
+      <div class="alert alert-danger">{{ $message}}</div>
+      @enderror
+    </div>
+
+
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault01">Image</label>
+      <input type="file" class="form-control" id="validationDefault01" placeholder="Total Flat" name="image" required>
+      @error('image')
       <div class="alert alert-danger">{{ $message}}</div>
       @enderror
     </div>

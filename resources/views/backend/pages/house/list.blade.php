@@ -1,4 +1,4 @@
-@extends('master')
+@extends('backend.master')
 
 @section('content')
 
@@ -15,6 +15,7 @@
       <th scope="col">Address</th>
       <th scope="col">Total Floor</th>
       <th scope="col">Total Flat</th>
+      <th scope="col">Image</th>
       <th scope="col">Action</th>
 
 
@@ -31,6 +32,9 @@
       <td>{{$house->house_address}}</td>
       <td>{{$house->total_floor}}</td>
       <td>{{$house->total_flat}}</td>
+      <td>
+        <img width="10%" src="{{url('/uploads/'. $house->image)}}" alt="image">
+      </td>
       <td>
         
           <a class="btn btn-success" href="">Edit</a>

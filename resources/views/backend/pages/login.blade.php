@@ -26,11 +26,17 @@
             <div class="form-outline mb-4">
               <input type="email" id="typeEmailX-2" name="email" class="form-control form-control-lg" required>
               <label class="form-label" for="typeEmailX-2">Email</label>
+              @error('email')
+              <div class="alert alert-danger">{{ $message}}</div>
+              @enderror
             </div>
 
             <div class="form-outline mb-4">
               <input type="password" id="typePasswordX-2" name="password" class="form-control form-control-lg" required>
               <label class="form-label" for="typePasswordX-2">Password</label>
+              @error('password')
+              <div class="alert alert-danger">{{ $message}}</div>
+              @enderror
             </div>
 
             
