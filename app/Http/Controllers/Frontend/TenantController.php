@@ -74,6 +74,11 @@ class TenantController extends Controller
         return redirect()->back();
     }
 
+    public function profile()
+    {
+        return view('frontend.pages.profile');
+    }
+
 
     public function logout()
     {

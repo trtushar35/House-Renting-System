@@ -14,11 +14,5 @@ class HomeController extends Controller
 
         return view('frontend.pages.home',compact('houses'));
     }  
-
-    public function dashboard()
-    {
-        
-    }
-
     
 }

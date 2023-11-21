@@ -36,10 +36,11 @@
                         @endguest
 
                         @auth
-                        <a href="{{route('tenant.logout')}}" class="nav-item nav-link">Logout</a>
+                        <a href="{{route('tenant.logout')}}" class="nav-item nav-link">Logout </a>
+                        <a href="{{route('profile.view')}}" class="nav-item nav-link"> Profile {{auth()->user()->role}} </a>
+                        
                         @endauth
                     </div>
-                    <a href="" class="btn btn-primary px-3 d-none d-lg-flex">Add Property</a>
                 </div>
             </nav>
         </div>

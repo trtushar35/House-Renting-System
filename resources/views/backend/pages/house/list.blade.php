@@ -37,8 +37,9 @@
       </td>
       <td>
         
-          <a class="btn btn-success" href="">Edit</a>
-          <a class="btn btn-danger" href="">Delete</a>
+          <a class="btn btn-success" href="{{route('house.edit', $house->id)}}">Edit</a>
+          <a class="btn btn-warning" href="{{route('house.view', $house->id)}}">View</a>
+          <a class="btn btn-danger" href="{{route('house.delete', $house->id)}}">Delete</a>
 
       </td>
     </tr>
