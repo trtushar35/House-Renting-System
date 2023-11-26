@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('tenants', function (Blueprint $table) {
             $table->id();
             $table->string('name', 50)->unique();
-            $table->string('username')->unique();
-            $table->string('city', 100);
-            $table->string('State', 100);
-            $table->integer('Zip');
+            $table->string('email', 30)->unique();
+            $table->integer('phone_number', 15);
+            $table->string('address');
+            $table->integer('nid');
             $table->timestamps();
         });
     }

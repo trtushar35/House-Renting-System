@@ -23,19 +23,18 @@ class TenantController extends Controller
     public function store(Request $request)
     {
 
-        // dd($request->all());
-
+        //  dd($request->all());
 
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'role' => 'customer',
+            'role' => $request->role,
             'password' => bcrypt($request->password),
         ]);
 
         // dd('hi');
         notify()->success('Customer Registration successful.');
-        return redirect()->route('home');
+        return redirect()->route('tenant.login');
     }
 
     public function login()
@@ -76,6 +75,7 @@ class TenantController extends Controller
 
     public function profile()
     {
+
         return view('frontend.pages.profile');
     }
 

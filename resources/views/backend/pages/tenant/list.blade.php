@@ -10,10 +10,10 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Name</th>
-      <th scope="col">username</th>
-      <th scope="col">city</th>
-      <th scope="col">state</th>
-      <th scope="col">zip</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">Address</th>
+      <th scope="col">NID</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
@@ -25,10 +25,10 @@
     <tr>
       <th scope="row">{{$tenant->id}}</th>
       <td>{{$tenant->name}}</td>
-      <td>{{$tenant->username}}</td>
-      <td>{{$tenant->city}}</td>
-      <td>{{$tenant->State}}</td>
-      <td>{{$tenant->Zip}}</td>
+      <td>{{$tenant->email}}</td>
+      <td>{{$tenant->phone_number}}</td>
+      <td>{{$tenant->address}}</td>
+      <td>{{$tenant->nid}}</td>
       <td>
         <a class="btn btn-success" href="">Edit</a>
         <a class="btn btn-danger" href="">Delete</a>

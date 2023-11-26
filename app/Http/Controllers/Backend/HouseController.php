@@ -13,7 +13,7 @@ class HouseController extends Controller
     public function list()
     {
 
-        $houses=House::paginate(5);
+        $houses=House::paginate(7);
         // $house_owners=House_Owner::all();
 
         return view('backend.pages.house.list', compact('houses'));
@@ -73,8 +73,17 @@ class HouseController extends Controller
             'house_name'=>$request->house_name,
             'house_owner_name'=>$request->house_owner_name,
             'house_address'=>$request->house_address,
-            'total_floor'=>$request->total_floor,
-            'total_flat'=>$request->total_flat,
+            'division'=>$request->division,
+            'district'=>$request->district,
+            'thana'=>$request->thana,
+            'floor_number'=>$request->floor_number,
+            'flat_number'=>$request->flat_number,
+            'total_bedroom'=>$request->total_bedroom,
+            'total_bathroom'=>$request->total_bathroom,
+            'rent_amount'=>$request->rent_amount,
+            'category'=>$request->category,
+            'available_date'=>$request->available_date,
+            'house_description'=>$request->house_description,
             'image'=>$fileName
             
             ]);
@@ -89,9 +98,10 @@ class HouseController extends Controller
     
 
 
-    public function store(request $request){
+    public function store(request $request)
+    {
 
-        // dd($request->all());
+        //  dd($request->all());
 
         
         $valided=Validator::make($request->all(),[
@@ -100,8 +110,16 @@ class HouseController extends Controller
             'house_name'=>'required',
             'house_owner_name'=>'required',
             'house_address'=>'required',
-            'total_floor'=>'required',
-            'total_flat'=>'required',
+            'district'=>'required',
+            'division'=>'required',
+            'thana'=>'required',
+            'floor_number'=>'required',
+            'flat_number'=>'required',
+            'total_bedroom'=>'required',
+            'total_bathroom'=>'required',
+            'rent_amount'=>'required',
+            'category'=>'required',
+            'available_date'=>'required',
             'image'=>'required'
         ]);
 
@@ -124,8 +142,17 @@ class HouseController extends Controller
             'house_name'=>$request->house_name,
             'house_owner_name'=>$request->house_owner_name,
             'house_address'=>$request->house_address,
-            'total_floor'=>$request->total_floor,
-            'total_flat'=>$request->total_flat,
+            'division'=>$request->division,
+            'district'=>$request->district,
+            'thana'=>$request->thana,
+            'floor_number'=>$request->floor_number,
+            'flat_number'=>$request->flat_number,
+            'total_bedroom'=>$request->total_bedroom,
+            'total_bathroom'=>$request->total_bathroom,
+            'rent_amount'=>$request->rent_amount,
+            'category'=>$request->category,
+            'available_date'=>$request->available_date,
+            'house_description'=>$request->house_description,
             'image'=>$fileName,
             
             ]

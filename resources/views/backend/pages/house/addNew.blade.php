@@ -2,8 +2,8 @@
 
 @section('content')
 
-<form action="{{route('house.store')}}" method="post" enctype="multipart/form-data">  
-    @csrf
+<form action="{{route('house.store')}}" method="post" enctype="multipart/form-data">
+  @csrf
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationDefault01">House Name</label>
@@ -12,7 +12,7 @@
       <div class="alert alert-danger">{{ $message}}</div>
       @enderror
     </div>
-    
+
 
     <div class="col-md-4 mb-3">
       <label for="validationDefault01">House Owner Name</label>
@@ -21,7 +21,7 @@
       <div class="alert alert-danger">{{ $message}}</div>
       @enderror
     </div>
-    
+
     <div class="col-md-4 mb-3">
       <label for="validationDefault01">House Address</label>
       <input type="text" class="form-control" id="validationDefault01" placeholder="House Address" name="house_address" required>
@@ -29,25 +29,101 @@
       <div class="alert alert-danger">{{ $message}}</div>
       @enderror
     </div>
-    
 
     <div class="col-md-4 mb-3">
-      <label for="validationDefault01">Total Floor</label>
-      <input type="text" class="form-control" id="validationDefault01" placeholder="Total Flat" name="total_floor" required>
-      @error('total_floor')
-      <div class="alert alert-danger">{{ $message}}</div>
-      @enderror
-    </div>
-    
-
-    <div class="col-md-4 mb-3">
-      <label for="validationDefault01">Total Flat</label>
-      <input type="text" class="form-control" id="validationDefault01" placeholder="Total Flat" name="total_flat" required>
-      @error('total_flat')
+      <label for="validationDefault01">Division</label>
+      <input type="text" class="form-control" id="validationDefault01" placeholder="Division" name="division" required>
+      @error('division')
       <div class="alert alert-danger">{{ $message}}</div>
       @enderror
     </div>
 
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault01">District</label>
+      <input type="text" class="form-control" id="validationDefault01" placeholder="District" name="district" required>
+      @error('district')
+      <div class="alert alert-danger">{{ $message}}</div>
+      @enderror
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault01">Thana</label>
+      <input type="text" class="form-control" id="validationDefault01" placeholder="Thana" name="thana" required>
+      @error('thana')
+      <div class="alert alert-danger">{{ $message}}</div>
+      @enderror
+    </div>
+
+    
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault01">Floor Number</label>
+      <input type="text" class="form-control" id="validationDefault01" placeholder="Floor Number" name="floor_number" required>
+      @error('floor_number')
+      <div class="alert alert-danger">{{ $message}}</div>
+      @enderror
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault01">flat Number</label>
+      <input type="text" class="form-control" id="validationDefault01" placeholder="Flat Number" name="flat_number" required>
+      @error('flat_number')
+      <div class="alert alert-danger">{{ $message}}</div>
+      @enderror
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault01">Total Bedroom</label>
+      <input type="text" class="form-control" id="validationDefault01" placeholder="Total Bedroom" name="total_bedroom" required>
+      @error('total_bedroom')
+      <div class="alert alert-danger">{{ $message}}</div>
+      @enderror
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault01">Total Bathroom</label>
+      <input type="text" class="form-control" id="validationDefault01" placeholder="Total Bathroom" name="total_bathroom" required>
+      @error('total_bathroom"')
+      <div class="alert alert-danger">{{ $message}}</div>
+      @enderror
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault01">Rent Amount</label>
+      <input type="text" class="form-control" id="validationDefault01" placeholder="Rent amount" name="rent_amount" required>
+      @error('rent_amount')
+      <div class="alert alert-danger">{{ $message}}</div>
+      @enderror
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault01">House Category</label>
+      <label for="">Select Category:</label>
+      <select required class="form-control" name="category" id="" required> 
+        <!-- <option value="">Admin</option> -->
+        <option value="family">Family</option>
+        <option value="bachelor">Bachelor</option>
+        <option value="office">Office</option>
+      </select>
+      @error('categoy')
+      <div class="alert alert-danger">{{ $message}}</div>
+      @enderror
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault01">Available Date</label>
+      <input type="date" class="form-control" id="validationDefault01" placeholder="Available Date" name="available_date" required>
+      @error('available_date')
+      <div class="alert alert-danger">{{ $message}}</div>
+      @enderror
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault01">Description</label>
+      <input type="text" row="3" class="form-control" id="validationDefault01" placeholder="Description" name="house_description">
+      @error('house_description')
+      <div class="alert alert-danger">{{ $message}}</div>
+      @enderror
+    </div>
 
     <div class="col-md-4 mb-3">
       <label for="validationDefault01">Image</label>
@@ -56,8 +132,8 @@
       <div class="alert alert-danger">{{ $message}}</div>
       @enderror
     </div>
-    
-    
+
+
   </div>
   <div class="form-group">
     <div class="form-check">
@@ -67,7 +143,7 @@
       </label>
     </div>
   </div>
-  
+
   <button class="btn btn-primary" type="submit">Submit form</button>
 </form>
 

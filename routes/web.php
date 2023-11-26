@@ -1,11 +1,13 @@
 <?php
 
+use GuzzleHttp\Middleware;
+
+
+
 use Illuminate\Support\Facades\Route;
-
-
-
-use App\Http\Controllers\Backend\homeController;
 use App\Http\Controllers\Backend\FlatController;
+use App\Http\Controllers\Backend\homeController;
+use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\HouseController;
 use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\TenantController;
@@ -15,11 +17,10 @@ use App\Http\Controllers\Backend\ComplainController;
 use App\Http\Controllers\Backend\HouseOwnerController;
 use App\Http\Controllers\Backend\Review_RatingController;
 use App\Http\Controllers\Backend\RentCollectionController;
-use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Frontend\BookingController as FrontendBookingController;
 use App\Http\Controllers\Frontend\HomeController as FrontendHomeController;
 use App\Http\Controllers\Frontend\HouseController as FrontendHouseController;
 use App\Http\Controllers\Frontend\TenantController as FrontendTenantController;
-use GuzzleHttp\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +51,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/logout', [FrontendTenantController::class, 'logout'])->name('tenant.logout');
 
     Route::get('/profile/view', [FrontendTenantController::class, 'profile'])->name('profile.view');
+
+    Route::get('/booking/form/{id}',[FrontendBookingController::class, 'booking'])->name('booking.form');
+
 });
 
 
@@ -76,11 +80,11 @@ Route::group(['prefix' => 'admin'], function () {
 
 
             Route::get('/tenant/list', [TenantController::class, 'list'])->name('tenant.list');
-            Route::get('/tenant/addNew', [TenantController::class, 'addNew'])->name('tenant.addNew');;
+            Route::get('/tenant/addNew', [TenantController::class, 'addNew'])->name('tenant.addNew');
             Route::post('/tenant/store/', [TenantController::class, 'store'])->name('tenant.store');
 
             Route::get('/houseOwner/list', [HouseOwnerController::class, 'list'])->name('houseOwner.list');
-            Route::get('/houseOwner/addNew', [HouseOwnerController::class, 'addNew'])->name('houseOwner.addNew');;
+            Route::get('/houseOwner/addNew', [HouseOwnerController::class, 'addNew'])->name('houseOwner.addNew');
             Route::post('/houseOwner/store', [HouseOwnerController::class, 'store'])->name('houseOwner.store');
 
             Route::get('/house/list', [HouseController::class, 'list'])->name('house.list');

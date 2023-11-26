@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('house__owners', function (Blueprint $table) {
             $table->id();
             $table->string('Name', 50)->unique();
-            $table->string('phone_number',15)->unique();
-            $table->string('address', 100)->nullable();
+            $table->string('email', 30)->unique();
+            $table->integer('phone_number',15)->unique();
+            $table->string('address', 100);
+            $table->integer('nid', 30);
             $table->timestamps();
         });
     }

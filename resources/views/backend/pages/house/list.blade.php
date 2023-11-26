@@ -9,12 +9,21 @@
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">Serial</th>
       <th scope="col">House Name</th>
       <th scope="col">House Owner Name</th>
       <th scope="col">Address</th>
-      <th scope="col">Total Floor</th>
-      <th scope="col">Total Flat</th>
+      <th scope="col">Division</th>
+      <th scope="col">District</th>
+      <th scope="col">Thana/Area</th>
+      <th scope="col">Floor Number</th>
+      <th scope="col">Flat Number</th>
+      <th scope="col">Total Bedroom</th>
+      <th scope="col">Total Bathroom</th>
+      <th scope="col">Rent Amount</th>
+      <th scope="col">Categories</th>
+      <th scope="col">Available Date</th>
+      <th scope="col">House Description</th>
       <th scope="col">Image</th>
       <th scope="col">Action</th>
 
@@ -30,10 +39,19 @@
       <td>{{$house->house_name}}</td>
       <td>{{$house->house_owner_name}}</td>
       <td>{{$house->house_address}}</td>
-      <td>{{$house->total_floor}}</td>
-      <td>{{$house->total_flat}}</td>
+      <td>{{$house->division}}</td>
+      <td>{{$house->district}}</td>
+      <td>{{$house->thana}}</td>
+      <td>{{$house->floor_number}}</td>
+      <td>{{$house->flat_number}}</td>
+      <td>{{$house->total_bedroom}}</td>
+      <td>{{$house->total_bathroom}}</td>
+      <td>{{$house->rent_amount}}</td>
+      <td>{{$house->category}}</td>
+      <td>{{$house->available_date}}</td>
+      <td>{{$house->house_description}}</td>
       <td>
-        <img width="10%" src="{{url('/uploads/'. $house->image)}}" alt="image">
+        <img width="100%" src="{{url('/uploads/'. $house->image)}}" alt="image">
       </td>
       <td>
         

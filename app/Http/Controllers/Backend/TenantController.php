@@ -28,10 +28,10 @@ class TenantController extends Controller
         Tenant::create(
            [
             'name'=>$request->name,
-            'username'=>$request->username,
-            'city'=>$request->city,
-            'state'=>$request->State,
-            'zip'=>$request->Zip,
+            'email'=>$request->email,
+            'phone_number'=>$request->phone_number,
+            'address'=>$request->address,
+            'nid'=>$request->nid,
            ] 
            );
 

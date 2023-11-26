@@ -1,8 +1,19 @@
-@extends('frontend.master')
+@extends('frontend.partial.other')
 
 @section('content')
 <form action="{{route('tenant.regform.store')}}" method="post">
     @csrf
+
+    <div class="form-group">
+        <label for="">Select Role</label>
+        <select required class="form-control" name="role" id="" required>
+            <option value="Tenant">Tenant</option>
+            <option value="House_Owner">House Owner</option>
+        </select>
+        @error('role')
+        <div class="alert alert-danger">{{ $message}}</div>
+        @enderror
+    </div>
 
     <div class="form-group">
         <label for="exampleInputEmail1">Name</label>

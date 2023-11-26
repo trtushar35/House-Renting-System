@@ -12,6 +12,7 @@ class HomeController extends Controller
 
         $houses=House::all();
 
+
         return view('frontend.pages.home',compact('houses'));
     }  
     
