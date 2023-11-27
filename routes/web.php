@@ -52,7 +52,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/profile/view', [FrontendTenantController::class, 'profile'])->name('profile.view');
 
-    Route::get('/booking/form/{id}',[FrontendBookingController::class, 'booking'])->name('booking.form');
+    Route::get('/book-now/{house_id}',[FrontendBookingController::class, 'booking'])->name('book.now');
+    Route::get('/book-cancel/{house_id}',[FrontendBookingController::class, 'cancelBooking'])->name('cancel.book');
 
 });
 
@@ -72,11 +73,16 @@ Route::group(['prefix' => 'admin'], function () {
 
             Route::get('/admin/logout', [UserController::class, 'logout'])->name('admin.logout');
 
-            Route::get('/', [homeController::class, ('home')])->name('dashboard');
+            Route::get('/', [homeController::class, 'home'])->name('dashboard');
 
             Route::get('/users/list', [UserController::class, 'list'])->name('users.list');
             Route::get('/users/addNew', [UserController::class, 'addNew'])->name('users.addNew');
             Route::post('/users/store', [UserController::class, 'store'])->name('users.store');
+            Route::get('/users/delete/{id}', [UserController::class, 'delete'])->name('users.delete');
+            Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
+            Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
+            Route::put('/users/update/{id}', [UserController::class, 'update'])->name('users.update');
+            Route::get('/users/view/{id}', [UserController::class, 'view'])->name('users.view');
 
 
             Route::get('/tenant/list', [TenantController::class, 'list'])->name('tenant.list');
@@ -95,12 +101,11 @@ Route::group(['prefix' => 'admin'], function () {
             Route::put('/house/update/{id}', [HouseController::class, 'update'])->name('house.update');
             Route::get('/house/view/{id}', [HouseController::class, 'view'])->name('house.view');
 
-
-            Route::get('/rentCollection/list', [RentCollectionController::class, ('list')])->name('rentCollection.list');
+            Route::get('/rentCollection/list', [RentCollectionController::class, 'list'])->name('rentCollection.list');
             Route::get('/rentCollection/addNew', [RentCollectionController::class, 'addNew'])->name('rentCollection.addNew');
             Route::post('/rentCollection/store', [RentCollectionController::class, 'store'])->name('rentCollection.store');
 
-            Route::get('/payment/list', [PaymentController::class, ('list')])->name('payment.list');
+            Route::get('/payment/list', [PaymentController::class, 'list'])->name('payment.list');
 
             Route::get('/complain/list', [ComplainController::class, 'list'])->name('complain.list');
 

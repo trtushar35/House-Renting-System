@@ -91,12 +91,8 @@ class HouseController extends Controller
           notify()->success('House updated successfully.');
           return redirect()->route('house.list');
         }
-          
-    }
-
-    
-    
-
+             
+    } 
 
     public function store(request $request)
     {

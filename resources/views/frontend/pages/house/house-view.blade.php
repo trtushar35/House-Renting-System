@@ -25,7 +25,7 @@
                         <i class="bi bi-heart-fill"></i>
                         Favorite
                     </button>
-                    <a class="btn btn-outline-dark flex-shrink-0" type="button" href="{{route('booking.form', $singleHouse->id)}}">
+                    <a class="btn btn-outline-dark flex-shrink-0" type="button" href="{{route('book.now', $singleHouse->id)}}">
                         <i class="bi bi-bookmark-check-fill"></i>
                         Book Now
                     </a>

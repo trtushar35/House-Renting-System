@@ -102,7 +102,6 @@
     <div class="col-md-4 mb-3">
       <label for="validationDefault01">House category</label>
       <select  value="{{$houses->category}}" class="form-control" name="category" id="" required> 
-        <!-- <option value="">Admin</option> -->
         <option value="family">Family</option>
         <option value="bachelor">Bachelor</option>
         <option value="office">Office</option>

@@ -15,7 +15,7 @@ class HouseController extends Controller
 
         // dd($singleHouse->id);
 
-        return view('frontend.pages.house-view',compact('singleHouse'));
+        return view('frontend.pages.house.house-view',compact('singleHouse'));
         
     }
 }

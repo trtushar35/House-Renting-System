@@ -26,9 +26,9 @@
         <td>{{$singleUser->email}}</td>
         <td>{{$singleUser->role}}</td>
         <td>
-            <a class="btn btn-success" href="">View</a>
-            <a class="btn btn-warning" href="">Edit</a>
-            <a  class="btn btn-danger"href="">Delete</a>
+            <a class="btn btn-success" href="{{route('users.view', $singleUser->id)}}">View</a>
+            <a class="btn btn-warning" href="{{route('users.edit', $singleUser->id)}}">Edit</a>
+            <a  class="btn btn-danger"href="{{route('users.delete', $singleUser->id)}}">Delete</a>
         </td>
     </tr>
   @endforeach
@@ -36,5 +36,6 @@
 
   
 </table>
+{{$users->links()}}
 
 @endsection

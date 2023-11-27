@@ -93,5 +93,36 @@
 
     </div>
 </div>
+<hr>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Date</th>
+            <th scope="col">House</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
 
+        @foreach ($bookings as $booking)
+
+
+        <tr>
+            <th scope="row">{{$booking->id}}</th>
+            <td>{{$booking->created_at}}</td>
+            <td>{{$booking->house_id}}</td>
+            <td>{{$booking->status}}</td>
+            <td>
+                @if($booking->status=='pending')
+                <a class="btn btn-danger" href="{{route('cancel.book', $booking->id)}}">Cancel Order</a>
+                @endif
+            </td>
+        </tr>
+
+        @endforeach
+
+    </tbody>
+</table>
 @endsection

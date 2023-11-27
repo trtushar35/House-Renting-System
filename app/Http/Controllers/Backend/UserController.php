@@ -9,8 +9,66 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    public function loginForm(){
+    public function loginForm()
+    {
         return view('backend.pages.login');
+    }
+
+    public function delete($id)
+    {
+        $users=User::find($id);
+        if($users)
+        {
+            $users->delete();
+        }
+        notify()->success('Users Delete Successfully.');
+        return redirect()->back();
+    }
+
+    public function edit($id)
+    {
+        $users=User::find($id);
+
+        return view('backend.pages.users.edit', compact('users'));
+        
+    }
+
+    public function view($id)
+    {
+        $users=User::find($id);
+
+        return view('backend.pages.users.view', compact('users'));
+        
+    }
+
+    public function update(Request $request, $id)
+    {
+        $users=User::find($id);
+
+        if($users)
+        {
+            $fileName=$users->image;
+
+            if($request->hasFile('image'))
+            {
+                $file=$request->file('image');
+                $fileName=date('Ymdhis').'.'.$file->getClientOriginalExtension();
+
+                $file->storeAs('/uploads', $fileName);
+
+            }
+
+            $users->update([
+                'name'=>$request->user_name,
+                'role'=>$request->role,
+                'image'=>$fileName,
+                'email'=>$request->user_email,
+                'password'=>bcrypt($request->user_password),
+            ]);
+
+            notify()->success('Users updated successfully.');
+            return redirect()->route('users.list');
+        }
     }
 
     public function loginPost(Request $request){
@@ -54,7 +112,7 @@ class UserController extends Controller
 
     public function list(){
 
-        $users=User::all();
+        $users=User::paginate(5);
         // dd($users);
         return view('backend.pages.users.list',compact('users'));
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\User;
+use App\Models\Booking;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -75,8 +76,9 @@ class TenantController extends Controller
 
     public function profile()
     {
+        $bookings=Booking::where('user_id',auth()->user()->id)->get();
 
-        return view('frontend.pages.profile');
+        return view('frontend.pages.profile.profile', compact('bookings'));
     }
 
 
