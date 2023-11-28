@@ -31,6 +31,7 @@
 
     <!-- Template Stylesheet -->
     <link href="{{url('frontend/')}}/css/style.css" rel="stylesheet">
+    
 </head>
 
 <body>

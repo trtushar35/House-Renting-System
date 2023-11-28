@@ -2,38 +2,44 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
+use App\Models\House;
 
-use App\Models\House_Owner;
+use App\Models\Owner;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class HouseOwnerController extends Controller
 {
-    public function list(){
+    public function list()
+    {
 
-        $house_owners=House_Owner::all();
+        $house_owners=Owner::all();
 
         return view('backend.pages.houseOwner.list',compact('house_owners'));
     }
 
-    public function addNew(){
+    public function addNew()
+    {
         return view('backend.pages.houseOwner.addNew');
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         //dd ($request->all());
 
-        House_Owner::create(
+        Owner::create(
             [
 
-                'Name'=>$request->Name,
-                'phone_number'=>$request->phone_number,
-                'address'=>$request->address,
+                'Name' => $request->Name,
+                'email' => $request->email,
+                'phone_number' => $request->phone_number,
+                'address' => $request->address,
+                'nid' => $request->nid,
+
 
             ]
         );
 
         return redirect()->back();
-
     }
 }

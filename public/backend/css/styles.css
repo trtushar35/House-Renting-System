@@ -104,6 +104,12 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.notify{
+  z-index:1000000;
+  position:absolute;
+  top:5%;
+}
+
 hr {
   margin: 1rem 0;
   color: inherit;
