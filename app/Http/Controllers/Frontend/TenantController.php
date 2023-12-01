@@ -85,8 +85,42 @@ class TenantController extends Controller
     public function editProfile($userId)
     {
         $users=User::find($userId);
+
         return view('frontend.pages.profile.editProfile',compact('users'));
         
+    }
+
+    public function updateProfile(Request $request, $userId)
+    {
+        //  dd($request);
+
+        $users=User::find($userId); 
+
+        if($users)
+        {
+            $fileName=$users->image;
+        
+            if($request->hasFile('image'))
+            {
+              $file=$request->file('image');
+              $fileName=date('Ymdhis').'.'.$file->getClientOriginalExtension();
+             
+              $file->storeAs('/uploads',$fileName);
+    
+            }
+        
+          
+            $users->update([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'role'=>$request->role,
+            'image'=>$fileName
+            
+            ]);
+
+          notify()->success('Updated successfully.');
+          return redirect()->route('profile.view');
+        }
     }
 
 

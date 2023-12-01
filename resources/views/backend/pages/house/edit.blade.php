@@ -129,7 +129,7 @@
 
     <div class="col-md-4 mb-3">
       <label for="validationDefault01">Image</label>
-      <input type="file" class="form-control" id="validationDefault01" placeholder="Total Flat" name="image">
+      <input type="file" class="form-control" id="validationDefault01" placeholder="image" name="image">
       @error('image')
       <div class="alert alert-danger">{{ $message}}</div>
       @enderror

@@ -31,7 +31,7 @@
     </tr>
   </thead>
 
-    @foreach($houses as $key=>$house)
+  @foreach($houses as $key=>$house)
 
   <tbody>
     <tr>
@@ -54,17 +54,17 @@
         <img width="100%" src="{{url('/uploads/'. $house->image)}}" alt="image">
       </td>
       <td>
-        
-          <a class="btn btn-success" href="{{route('house.edit', $house->id)}}">Edit</a>
-          <a class="btn btn-warning" href="{{route('house.view', $house->id)}}">View</a>
-          <a class="btn btn-danger" href="{{route('house.delete', $house->id)}}">Delete</a>
+
+        <a class="btn btn-success" href="{{route('house.edit', $house->id)}}">Edit</a>
+        <a class="btn btn-warning" href="{{route('house.view', $house->id)}}">View</a>
+        <a class="btn btn-danger" href="{{route('house.delete', $house->id)}}">Delete</a>
 
       </td>
     </tr>
   </tbody>
 
 
-    @endforeach
+  @endforeach
 
 </table>
 

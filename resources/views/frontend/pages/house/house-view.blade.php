@@ -15,6 +15,9 @@
                 <div class=" mb-1">
                     <h1>House Name: {{$singleHouse->house_name}}</h1>
                 </div>
+                <div class=" mb-1">
+                    <h1>House Owner Name: {{$singleHouse->house_owner_name}}</h1>
+                </div>
                 <h3>House Address: {{$singleHouse->house_address}}</h3>
                 <div class="fs-5 mb-5">
                     <span>Rent amount: {{$singleHouse->rent_amount}}.bdt</span>

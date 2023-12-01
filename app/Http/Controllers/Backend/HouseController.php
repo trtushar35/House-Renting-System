@@ -43,6 +43,7 @@ class HouseController extends Controller
         return view('backend.pages.house.edit', compact('houses'));
 
     }
+    
     public function view($id)
     {
         $houses=House::find($id);

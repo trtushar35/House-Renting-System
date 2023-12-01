@@ -18,6 +18,7 @@ use App\Http\Controllers\Backend\HouseOwnerController;
 use App\Http\Controllers\Backend\Review_RatingController;
 use App\Http\Controllers\Backend\RentCollectionController;
 use App\Http\Controllers\Frontend\BookingController as FrontendBookingController;
+use App\Http\Controllers\Frontend\FavoriteController as FrontendFavoriteController;
 use App\Http\Controllers\Frontend\HomeController as FrontendHomeController;
 use App\Http\Controllers\Frontend\HouseController as FrontendHouseController;
 use App\Http\Controllers\Frontend\TenantController as FrontendTenantController;
@@ -52,9 +53,13 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/profile/view', [FrontendTenantController::class, 'profile'])->name('profile.view');
     Route::get('/edit-profile/{id}', [FrontendTenantController::class, 'editProfile'])->name('edit.profile');
+    Route::put('/update-profile/{id}', [FrontendTenantController::class, 'updateProfile'])->name('update.profile');
 
     Route::get('/book-now/{house_id}',[FrontendBookingController::class, 'booking'])->name('book.now');
     Route::get('/book-cancel/{house_id}',[FrontendBookingController::class, 'cancelBooking'])->name('cancel.book');
+
+    Route::get('/favorite/list', [FrontendFavoriteController::class, 'favoriteList'])->name('favorite.list.view');
+    Route::get('/add-to-favorite/list/{house_id}', [FrontendFavoriteController::class, 'favoriteList'])->name('addTofavorite.list');
 
 });
 

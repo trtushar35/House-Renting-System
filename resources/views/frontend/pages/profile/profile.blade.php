@@ -27,7 +27,9 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="d-flex flex-column align-items-center text-center">
-                                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                                        <div>
+                                        <img src="{{url('/uploads/'. auth()->user()->image)}}" alt="Upload Image" class="rounded-circle" width="150">
+                                        </div>
                                         <div class="mt-3">
                                             <h4>{{ auth()->user()->name}}</h4>
                                             <p class="text-secondary mb-1">{{auth()->user()->role}}</p>
@@ -61,7 +63,7 @@
                                 <h6 class="mb-0">Phone</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                {{ auth()->user()->role }}
+                                {{ auth()->user()->role}}
                             </div>
                         </div>
                         <hr>
