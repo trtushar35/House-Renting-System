@@ -24,10 +24,10 @@
                 </div>
                 <p class="lead">Description: {{$singleHouse->house_description}}</p>
                 <div class="d-flex">
-                    <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                    <a class="btn btn-outline-dark flex-shrink-0" type="button" href="{{route('addTofavorite.list', $singleHouse->id)}}">
                         <i class="bi bi-heart-fill"></i>
                         Favorite
-                    </button>
+                    </a>
                     <a class="btn btn-outline-dark flex-shrink-0" type="button" href="{{route('book.now', $singleHouse->id)}}">
                         <i class="bi bi-bookmark-check-fill"></i>
                         Book Now

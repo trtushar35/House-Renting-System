@@ -37,7 +37,7 @@ use App\Http\Controllers\Frontend\TenantController as FrontendTenantController;
 
 // frontend routes
 Route::get('/', [FrontendHomeController::class, 'home'])->name('home');
-
+Route::get('/search-house', [FrontendHomeController::class, 'search'])->name('house.search');
 
 Route::get('/registration-form', [FrontendTenantController::class, 'registration'])->name('tenant.registration');
 Route::post('/regform-store', [FrontendTenantController::class, 'store'])->name('tenant.regform.store');
@@ -58,8 +58,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/book-now/{house_id}',[FrontendBookingController::class, 'booking'])->name('book.now');
     Route::get('/book-cancel/{house_id}',[FrontendBookingController::class, 'cancelBooking'])->name('cancel.book');
 
-    Route::get('/favorite/list', [FrontendFavoriteController::class, 'favoriteList'])->name('favorite.list.view');
-    Route::get('/add-to-favorite/list/{house_id}', [FrontendFavoriteController::class, 'favoriteList'])->name('addTofavorite.list');
+    Route::get('/saved/favorite/list/{id}', [FrontendFavoriteController::class, 'favoriteList'])->name('favorite.list.view');
+    Route::get('/add-to-favorite/list/{house_id}', [FrontendFavoriteController::class, 'addFavoriteList'])->name('addTofavorite.list');
 
 });
 

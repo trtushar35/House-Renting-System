@@ -88,7 +88,7 @@
                         <div class="row">
                             <div class="col-sm">
                                 <a class="btn btn-info " href="{{route('edit.profile', auth()->user()->id)}}">Edit</a>
-                            </div>
+                            </div> 
                         </div>
                     </div>
                 </div>

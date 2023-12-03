@@ -14,7 +14,7 @@
                     <div class="navbar-nav ms-auto">
                         <a href="{{route('home')}}" class="nav-item nav-link active">Home</a>
                         
-                        <a href="{{route('favorite.list.view')}}" class="nav-item nav-link">Saved Property</a>
+                        <a href="{{route('favorite.list.view',auth()->user()->id)}}" class="nav-item nav-link">Saved Property</a>
                         
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Property List</a>
