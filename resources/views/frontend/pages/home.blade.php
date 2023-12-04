@@ -7,16 +7,14 @@
     <div class="col-lg-6">
       <div class="text-start mx-auto mb-5 wow slideInLeft" data-wow-delay="0.1s">
         <h1 class="mb-3">Property Listing</h1>
-        <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod sit diam justo sed rebum.</p>
       </div>
     </div>
     <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
       <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
 
         <li class="nav-item me-2">
-          <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#">Add Property</a>
+          <a class="btn btn-outline-primary" href="{{route('add.property')}}">Add Property</a>
         </li>
-
       </ul>
     </div>
   </div>
@@ -42,7 +40,7 @@
               <p><i class="fa fa-map-marker-alt text-primary me-2">{{$house->house_address}}</i></p>
             </div>
             <div class="d-flex border-top">
-              <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft</small>
+              <small class="flex-fill text-center border-end py-2"><i class="bi bi-calendar2-check-fill"></i> Available From: {{$house->available_date}}</small>
               <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-primary me-2"></i>{{$house->total_bedroom}}</small>
               <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>{{$house->total_bathroom}}</small>
             </div>

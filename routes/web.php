@@ -52,6 +52,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/logout', [FrontendTenantController::class, 'logout'])->name('tenant.logout');
 
+    Route::get('/add/property', [FrontendHouseController::class, 'createProperty'])->name('add.property');
+    Route::post('/store/property', [FrontendHouseController::class, 'storeProperty'])->name('store.property');
+
     Route::get('/profile/view', [FrontendTenantController::class, 'profile'])->name('profile.view');
     Route::get('/edit-profile/{id}', [FrontendTenantController::class, 'editProfile'])->name('edit.profile');
     Route::put('/update-profile/{id}', [FrontendTenantController::class, 'updateProfile'])->name('update.profile');

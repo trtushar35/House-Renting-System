@@ -12,7 +12,7 @@
       <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
 
         <li class="nav-item me-2">
-          <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#">Add Property</a>
+          <a class="btn btn-outline-primary" href="{{route('add.property')}}">Add Property</a>
         </li>
 
       </ul>
@@ -40,7 +40,7 @@
               <p><i class="fa fa-map-marker-alt text-primary me-2">{{$house->house_address}}</i></p>
             </div>
             <div class="d-flex border-top">
-              <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft</small>
+              <small class="flex-fill text-center border-end py-2"><i class="bi bi-calendar2-check-fill"></i> Available From: {{$house->available_date}}</small>
               <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-primary me-2"></i>{{$house->total_bedroom}}</small>
               <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>{{$house->total_bathroom}}</small>
             </div>
