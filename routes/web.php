@@ -38,6 +38,7 @@ use App\Http\Controllers\Frontend\TenantController as FrontendTenantController;
 // frontend routes
 Route::get('/', [FrontendHomeController::class, 'home'])->name('home');
 Route::get('/search-house', [FrontendHomeController::class, 'search'])->name('house.search');
+Route::get('/broese-all/property', [FrontendHomeController::class, 'browseAllProperty'])->name('browse.all.property');
 
 Route::get('/registration-form', [FrontendTenantController::class, 'registration'])->name('tenant.registration');
 Route::post('/regform-store', [FrontendTenantController::class, 'store'])->name('tenant.regform.store');

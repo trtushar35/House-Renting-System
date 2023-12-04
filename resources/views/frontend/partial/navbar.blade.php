@@ -13,9 +13,9 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto">
                         <a href="{{route('home')}}" class="nav-item nav-link active">Home</a>
-                        
+                        @auth
                         <a href="{{route('favorite.list.view',auth()->user()->id)}}" class="nav-item nav-link">Saved Property</a>
-                        
+                        @endauth
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Property List</a>
                             <div class="dropdown-menu rounded-0 m-0">
@@ -30,7 +30,7 @@
                                 <a href="#" class="dropdown-item">Sylhet Division</a>
                             </div>
                         </div>
-                        <a href="#" class="nav-item nav-link">Contact Us</a>
+                        <a href="#" class="nav-item nav-link">About Us</a>
                         @guest
                         <a href="{{route('tenant.login')}}" class="nav-item nav-link">Login</a>
                         <a href="{{route('tenant.registration')}}" id="#registration" class="nav-item nav-link">Registration</a>

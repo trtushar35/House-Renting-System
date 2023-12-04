@@ -30,4 +30,9 @@ class HomeController extends Controller
         return view('frontend.pages.search', compact('houses'));
     }
     
+    public function browseAllProperty()
+    {
+        $houses=House::all();
+        return view('frontend.pages.allProperty',compact('houses')); 
+    }
 }

@@ -39,7 +39,6 @@
                 @endforeach
 
                 @else
-
                     <h1>No house found.</h1>
                 @endif
 
