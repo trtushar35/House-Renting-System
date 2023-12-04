@@ -31,6 +31,7 @@
                             </div>
                         </div>
                         <a href="#" class="nav-item nav-link">About Us</a>
+                 
                         @guest
                         <a href="{{route('tenant.login')}}" class="nav-item nav-link">Login</a>
                         <a href="{{route('tenant.registration')}}" id="#registration" class="nav-item nav-link">Registration</a>

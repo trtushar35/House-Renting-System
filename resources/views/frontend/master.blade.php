@@ -104,6 +104,7 @@
 
         <!-- Team End -->
 
+        @include('frontend.partial.aboutUs')
 
         <!-- Testimonial Start -->
         @include('frontend.partial.review')

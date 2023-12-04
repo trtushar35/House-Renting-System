@@ -2,6 +2,25 @@
 
 @section('content')
 <div class="container ">
+  <div class="container-fluid bg-primary mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
+    <div class="container">
+      <form action="{{route('house.search')}}" method="get">
+        <div class="row g-2">
+          <div class="col-md-10">
+            <div class="row g-2">
+              <div class="">
+                <input type="text" class="form-control" placeholder="Search..." name="search">
+              </div>
+
+            </div>
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-dark border-0 w-100 py-3">Search</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
   <div class="row g-0 gx-5 align-items-end">
     <div class="col-lg-6">
       <div class="text-start mx-auto mb-5 wow slideInLeft" data-wow-delay="0.1s">
@@ -49,11 +68,11 @@
         </div>
 
         @endforeach
-        
+
       </div>
 
     </div>
 
 
   </div>
-@endsection
+  @endsection
