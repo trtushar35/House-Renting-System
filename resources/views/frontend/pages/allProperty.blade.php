@@ -27,16 +27,6 @@
         <h1 class="mb-3">All Property List</h1>
       </div>
     </div>
-    <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
-      <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
-
-        <li class="nav-item me-2">
-          <a class="btn btn-outline-primary" href="{{route('add.property')}}">Add Property</a>
-        </li>
-
-      </ul>
-    </div>
-  </div>
   <div class="tab-content">
     <div id="tab-1" class="tab-pane fade show p-0 active">
 

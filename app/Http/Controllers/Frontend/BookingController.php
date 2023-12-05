@@ -19,7 +19,6 @@ class BookingController extends Controller
         notify()->success('Booking Successfull.');
         return redirect()->back();
         
-
     }
 
     public function cancelBooking($houseId)

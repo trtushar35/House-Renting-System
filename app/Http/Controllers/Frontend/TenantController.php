@@ -77,7 +77,7 @@ class TenantController extends Controller
     public function profile()
     {
         $bookings=Booking::where('user_id',auth()->user()->id)->get();
-        $users=user::all();
+        $users=User::all();
 
         return view('frontend.pages.profile.profile', compact('bookings', 'users'));
     }

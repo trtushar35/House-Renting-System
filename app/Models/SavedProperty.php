@@ -10,8 +10,9 @@ class SavedProperty extends Model
     use HasFactory;
     protected $guarded=[];
 
-    public function favorite()
+    public function house()
     {
-        return $this->belongsTo(House::class);
+        return $this->belongsTo(House::class, "house_id", "id");
     }
+
 }

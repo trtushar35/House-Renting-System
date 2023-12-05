@@ -18,8 +18,8 @@
                             <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
                                 <!-- Image -->
                                 <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
-                                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/12a.webp" class="w-100" alt="Blue Jeans Jacket" />
-                                    <a href="#!">
+                                    <img src="{{url('/uploads/'. $savedProperty->house->image)}}" class="w-100" alt="house id:{{$savedProperty->house_id}}" />
+                                    <a href="">
                                         <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
                                     </a>
                                 </div>
@@ -28,15 +28,18 @@
 
                             <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
                                 <!-- Data -->
-                                <p><strong>{{$savedProperty->user_name}}</strong></p>
-                                <p>Color: blue</p>
-                                <p>Size: M</p>
+                                <p><strong>House Name: {{$savedProperty->house->house_name}}</strong></p>
+                                <p>House Owner Name: {{$savedProperty->house->house_owner_name}}</p>
+                                <p>Address: {{$savedProperty->house->house_address}}</p>
+                                <p></p>
                                 <button type="button" class="btn btn-danger btn-sm me-1 mb-2" data-mdb-toggle="tooltip" title="Remove item">
                                     <i class="fas fa-trash"></i>
                                 </button>
-                                <button type="button" class="btn btn-primary btn-sm mb-2" data-mdb-toggle="tooltip" title="Move to the wish list">
-                                     Check Out
-                                </button>
+
+                               
+                                <a type="button" class="btn btn-primary btn-sm mb-2" href="" title="Move to the wish list">
+                                     view
+                                </a>
                                 <!-- Data -->
                             </div>
 
@@ -47,16 +50,16 @@
 
                                 <!-- Price -->
                                 <p class="text-start text-md-center">
-                                    <strong>Rent Amount: $17.99</strong>
+                                    <strong>Rent Amount: {{$savedProperty->house->rent_amount}} BDT</strong>
                                 </p>
                                 <!-- Price -->
                             </div>
                         </div>
-                        @endforeach
+                       
                         <!-- Single item -->
 
                         <hr class="my-4" />
-
+                        @endforeach
                         <!-- Single item -->
                         
                         <!-- Single item -->

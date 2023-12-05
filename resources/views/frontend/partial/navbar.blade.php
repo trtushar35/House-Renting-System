@@ -19,7 +19,7 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Property List</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                <a href="#" class="dropdown-item">All Property List</a>
+                                <a href="{{route('browse.all.property')}}" class="dropdown-item">All Property List</a>
                                 <a href="#" class="dropdown-item">Dhaka Division</a>
                                 <a href="#" class="dropdown-item">Barisal Division</a>
                                 <a href="#" class="dropdown-item">Chittagong Division</a>

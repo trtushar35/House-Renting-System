@@ -98,7 +98,7 @@ class HouseController extends Controller
     public function store(request $request)
     {
 
-        //  dd($request->all());
+        //dd($request->all());
 
         
         $valided=Validator::make($request->all(),[
