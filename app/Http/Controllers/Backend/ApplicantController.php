@@ -13,8 +13,8 @@ class ApplicantController extends Controller
 {
     public function list()
     {
-        $applicants=Booking::all();
-       
-        return view('backend.pages.applicant.list', compact('applicants'));
+        $applicants=Booking::with('house')->get();
+        $users = User::where('role', 'Tenant')->get();
+        return view('backend.pages.applicant.list', compact('applicants','users'));
     }
 }
