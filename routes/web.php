@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\ApplicantController;
 use GuzzleHttp\Middleware;
 
 
@@ -16,7 +17,6 @@ use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\ComplainController;
 use App\Http\Controllers\Backend\HouseOwnerController;
 use App\Http\Controllers\Backend\Review_RatingController;
-use App\Http\Controllers\Backend\RentCollectionController;
 use App\Http\Controllers\Frontend\BookingController as FrontendBookingController;
 use App\Http\Controllers\Frontend\FavoriteController as FrontendFavoriteController;
 use App\Http\Controllers\Frontend\HomeController as FrontendHomeController;
@@ -113,15 +113,15 @@ Route::group(['prefix' => 'admin'], function () {
             Route::put('/house/update/{id}', [HouseController::class, 'update'])->name('house.update');
             Route::get('/house/view/{id}', [HouseController::class, 'view'])->name('house.view');
 
-            Route::get('/rentCollection/list', [RentCollectionController::class, 'list'])->name('rentCollection.list');
-            Route::get('/rentCollection/addNew', [RentCollectionController::class, 'addNew'])->name('rentCollection.addNew');
-            Route::post('/rentCollection/store', [RentCollectionController::class, 'store'])->name('rentCollection.store');
+            Route::get('/applicant/list/', [ApplicantController::class, 'list'])->name('applicant.list');
 
             Route::get('/payment/list', [PaymentController::class, 'list'])->name('payment.list');
 
             Route::get('/complain/list', [ComplainController::class, 'list'])->name('complain.list');
 
             Route::get('/service/list', [ServiceController::class, 'list'])->name('service.list');
+            Route::get('/service/create', [ServiceController::class, 'create'])->name('service.create');
+            Route::post('/service/store', [ServiceController::class, 'store'])->name('service.store');
 
             Route::get('/review_rating/list', [Review_RatingController::class, 'list'])->name('review.rating.list');
 

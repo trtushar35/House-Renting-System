@@ -19,11 +19,11 @@
   </thead>
 
 
-  @foreach ($tenants as $tenant)
+  @foreach ($tenants as $key=>$tenant)
 
   <tbody>
     <tr>
-      <th scope="row">{{$tenant->id}}</th>
+      <th scope="row">{{$key+1}}</th>
       <td>{{$tenant->name}}</td>
       <td>{{$tenant->email}}</td>
       <td>{{$tenant->phone_number}}</td>

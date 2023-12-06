@@ -33,7 +33,7 @@
    <select value="{{$users->role}}" class="form-control" name="role" id="" required>
         <option value="admin">Admin</option>
         <option value="manager">Manager</option>
-        <option value="account">Account</option>
+        <option value="tenant">Tenant</option>
    </select>
   </div>
 

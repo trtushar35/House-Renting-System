@@ -35,6 +35,7 @@
         <!-- <option value="">Admin</option> -->
         <option value="manager">Manager</option>
         <option value="account">Account</option>
+        <option value="tenant">Tenant</option>
    </select>
   </div>
 

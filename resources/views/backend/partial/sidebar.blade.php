@@ -28,19 +28,14 @@
                                 Tenant
                             </a>
 
-                            <a class="nav-link" href="{{route('rentCollection.list')}}">
+                            <a class="nav-link" href="{{route('applicant.list')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Rent Collection
+                                Applicant List
                             </a>                            
-
-                            <a class="nav-link" href="{{route('houseOwner.list')}}" >
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                House Owner
-                            </a>
                             
                             <a class="nav-link" href="{{route('payment.list')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Payment
+                                Rent Collection
                             </a>
 
                             <a class="nav-link" href="{{route('complain.list')}}">

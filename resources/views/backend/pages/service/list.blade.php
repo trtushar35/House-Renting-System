@@ -2,36 +2,28 @@
 
 @section('content')
 <h1>Service List</h1>
-
+<a href="{{route('service.create')}}" class="btn btn-success">Create New Service</a>
 <table class="table table-bordered">
 <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Phone</th>
-      <th scope="col">Address</th>
-
+      <th scope="col">Service Taker</th>
+      <th scope="col">Service Type</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
+  @foreach($services as $key=>$service)
   <tbody>
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>01545</td>
-      <td>Dhaka</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>015457</td>
-      <td>Tangail</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="1">Larry the Bird</td>
-      <td>53445</td>
-      <td>Gazipur</td>
+      <th scope="row">{{$key+1}}</th>
+      <td>{{$service->taker_name}}</td>
+      <td>{{$service->service_type}}</td>
+      <td>
+        <a href="" class="btn btn-success">Edit</a>
+        <a href="" class="btn btn-danger">Delete</a>
+      </td>
     </tr>
   </tbody>
+  @endforeach
 </table>
 @endsection
