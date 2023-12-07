@@ -23,8 +23,9 @@
       <th scope="col">Rent Amount</th>
       <th scope="col">Categories</th>
       <th scope="col">Available Date</th>
-      <th scope="col">House Description</th>
+      <th scope="col">Summary</th>
       <th scope="col">Image</th>
+      <th scope="col">Status</th>
       <th scope="col">Action</th>
 
 
@@ -49,10 +50,11 @@
       <td>{{$house->rent_amount}}</td>
       <td>{{$house->category}}</td>
       <td>{{$house->available_date}}</td>
-      <td>{{$house->house_description}}</td>
+      <td>{{$house->summary}}</td>
       <td>
         <img width="100%" src="{{url('/uploads/'. $house->image)}}" alt="image">
       </td>
+      <td>{{$house->status}}</td>
       <td>
 
         <a class="btn btn-success" href="{{route('house.edit', $house->id)}}">Edit</a>

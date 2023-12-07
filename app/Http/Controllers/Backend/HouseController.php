@@ -84,9 +84,8 @@ class HouseController extends Controller
             'rent_amount'=>$request->rent_amount,
             'category'=>$request->category,
             'available_date'=>$request->available_date,
-            'house_description'=>$request->house_description,
-            'image'=>$fileName
-            
+            'summary'=>$request->summary,
+            'image'=>$fileName            
             ]);
 
           notify()->success('House updated successfully.');
@@ -149,7 +148,7 @@ class HouseController extends Controller
             'rent_amount'=>$request->rent_amount,
             'category'=>$request->category,
             'available_date'=>$request->available_date,
-            'house_description'=>$request->house_description,
+            'summary'=>$request->summary,
             'image'=>$fileName,
             
             ]

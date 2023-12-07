@@ -123,7 +123,7 @@
             <td>{{$booking->status}}</td>
             <td>
                 @if($booking->status=='pending')
-                <a class="btn btn-danger" href="{{route('cancel.book', $booking->id)}}">Cancel Order</a>
+                <a class="btn btn-danger" href="{{route('cancel.book', $booking->id)}}">Cancel Booking</a>
                 @endif
             </td>
         </tr>

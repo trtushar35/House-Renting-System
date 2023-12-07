@@ -23,11 +23,12 @@ return new class extends Migration
             $table->string('flat_number');
             $table->integer('total_bedroom');
             $table->integer('total_bathroom');
-            $table->string('house_description')->nullable();
+            $table->string('summary')->nullable();
             $table->integer('rent_amount');
             $table->string('category');
             $table->date('available_date');
             $table->string('image');
+            $table->string('status')->default('Available');
             $table->timestamps();
         });
     }

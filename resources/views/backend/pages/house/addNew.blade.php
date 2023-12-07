@@ -118,9 +118,9 @@
     </div>
 
     <div class="col-md-4 mb-3">
-      <label for="validationDefault01">Description</label>
-      <input type="text" row="3" class="form-control" id="validationDefault01" placeholder="Description" name="house_description">
-      @error('house_description')
+      <label for="validationDefault01">Summary</label>
+      <input type="text" row="3" class="form-control" id="validationDefault01" placeholder="Summary" name="summary">
+      @error('summary')
       <div class="alert alert-danger">{{ $message}}</div>
       @enderror
     </div>
