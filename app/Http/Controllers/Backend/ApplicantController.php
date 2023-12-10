@@ -18,4 +18,30 @@ class ApplicantController extends Controller
         $users = User::where('role', 'Tenant')->get();
         return view('backend.pages.applicant.list', compact('applicants','users'));
     }
+
+    public function confirm($houseId)
+    {
+        $booking=Booking::find($houseId);
+        if($booking)
+        {
+            $booking->update([
+                'status'=>'Approved'
+            ]);
+        }
+        notify()->success('Booking Approved.');
+        return redirect()->back();
+    }
+
+    public function reject($houseId)
+    {
+        $booking=Booking::find($houseId);
+        if($booking)
+        {
+            $booking->update([
+                'status'=>'Rejected'
+            ]);
+        }
+        notify()->success('Booking Rejected.');
+        return redirect()->back();
+    }
 }

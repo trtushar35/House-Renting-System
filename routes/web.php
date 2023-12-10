@@ -117,6 +117,8 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('/house/view/{id}', [HouseController::class, 'view'])->name('house.view');
 
             Route::get('/applicant/list/', [ApplicantController::class, 'list'])->name('applicant.list');
+            Route::get('/applicant/confirm/{id}', [ApplicantController::class, 'confirm'])->name('applicant.confirm');
+            Route::get('/applicant/reject/{id}', [ApplicantController::class, 'reject'])->name('applicant.reject');
 
             Route::get('/payment/list', [PaymentController::class, 'list'])->name('payment.list');
 

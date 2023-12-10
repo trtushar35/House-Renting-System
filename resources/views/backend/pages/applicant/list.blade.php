@@ -13,23 +13,27 @@
       <th scope="col">House Address</th>
       <th scope="col">Floor Number</th>
       <th scope="col">Flat Number</th>
+      <th scope="col">Status</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
   @foreach($applicants as $applicant)
   <tbody>
     <tr>
-      <th scope="row">{{$applicant->user_id}}</th>
+      <th scope="row">{{$applicant->id}}</th>
       <td>{{$applicant->user->name}}</td>
       <td>{{$applicant->user->address}}</td>
       <td>{{$applicant->house->house_name}}</td>
       <td>{{$applicant->house->house_address}}</td>
       <td>{{$applicant->house->floor_number}}</td>
       <td>{{$applicant->house->flat_number}}</td>
-      <td>
-        <a class="btn btn-success" href="">Accept</a>
-        <a class="btn btn-danger" href="">Reject </a>
+      <td>{{$applicant->status}}</td>
+      @if($applicant->status=='pending')
+      <td>      
+        <a class="btn btn-success" href="{{route('applicant.confirm', $applicant->id)}}">Accept</a>
+        <a class="btn btn-danger" href="{{route('applicant.reject', $applicant->id)}}">Reject </a>
       </td>
+      @endif
     </tr>
   </tbody>
   @endforeach
