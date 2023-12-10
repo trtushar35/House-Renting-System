@@ -26,7 +26,6 @@
     @error('user_name')
     <div class="alert alert-danger">{{ $message }}</div>
     @enderror
-
   </div>
 
   <div class="form-group">
@@ -40,7 +39,13 @@
   </div>
 
 
-
+  <div class="form-group">
+    <label for="">Phone Number: </label>
+    <input required type="password" class="form-control" placeholder="Enter phone number" name="phone">  
+    @error('phone')
+    <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
+  </div>
 
   <div class="form-group">
     <label for="">Enter Email: </label>
@@ -52,17 +57,23 @@
     
   </div>
 
-
+  <div class="form-group">
+    <label for="">Address: </label>
+    <input required type="text" class="form-control" placeholder="Enter address" name="address">  
+    @error('address')
+    <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
+  </div>
 
   <div class="form-group">
     <label for="">Enter Password: </label>
-    <input required type="password" class="form-control" placeholder="Enter password" name="user_password">
-    
+    <input required type="password" class="form-control" placeholder="Enter password" name="user_password">  
     @error('user_password')
     <div class="alert alert-danger">{{ $message }}</div>
     @enderror
     
   </div>
+
 
 
   <div class="form-group">

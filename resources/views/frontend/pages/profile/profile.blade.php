@@ -31,9 +31,7 @@
                                         <img src="{{url('/uploads/'. auth()->user()->image)}}" alt="Upload Image" class="rounded-circle" width="150">
                                         </div>
                                         <div class="mt-3">
-                                            <h4>{{ auth()->user()->name}}</h4>
-                                            <p class="text-secondary mb-1">{{auth()->user()->role}}</p>
-                                            <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                                           
                                         </div>
                                     </div>
                                 </div>
@@ -63,16 +61,7 @@
                                 <h6 class="mb-0">Phone</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                {{ auth()->user()->role}}
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Mobile</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                (320) 380-4539
+                                {{auth()->user()->phone}}
                             </div>
                         </div>
                         <hr>
@@ -81,7 +70,7 @@
                                 <h6 class="mb-0">Address</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                Bay Area, San Francisco, CA
+                                {{auth()->user()->address}}
                             </div>
                         </div>
                         <hr>
@@ -114,7 +103,6 @@
     <tbody>
 
         @foreach ($bookings as $booking)
-
 
         <tr>
             <th scope="row">{{$booking->id}}</th>

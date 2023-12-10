@@ -30,7 +30,7 @@
 
                             <a class="nav-link" href="{{route('applicant.list')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Applicant List
+                                Booking List
                             </a>                            
                             
                             <a class="nav-link" href="{{route('payment.list')}}">
@@ -43,10 +43,10 @@
                                 Complain 
                             </a>
 
-                            <a class="nav-link" href="{{route('service.list')}}">
+                            <!-- <a class="nav-link" href="{{route('service.list')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Service
-                            </a>
+                            </a> -->
 
                             <a class="nav-link" href="{{route('review.rating.list')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>

@@ -9,9 +9,11 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Name</th>
-      <th scope="col">Image</th>
       <th scope="col">Email</th>
+      <th scope="col">Phone</th>
       <th scope="col">Role</th>
+      <th scope="col">Address</th>
+      <th scope="col">Image</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
@@ -20,11 +22,13 @@
     <tr>
         <td>{{$key+1}}</td>
         <td>{{$singleUser->name}}</td>
+        <td>{{$singleUser->email}}</td>
+        <td>{{$singleUser->phone}}</td>
+        <td>{{$singleUser->role}}</td>
+        <td>{{$singleUser->address}}</td>
         <td>
             <img style="border-radius: 60px;" width="7%" src="{{url('/uploads/'.$singleUser->image)}}" alt="image">
         </td>
-        <td>{{$singleUser->email}}</td>
-        <td>{{$singleUser->role}}</td>
         <td>
             <a class="btn btn-success" href="{{route('users.view', $singleUser->id)}}">View</a>
             <a class="btn btn-warning" href="{{route('users.edit', $singleUser->id)}}">Edit</a>

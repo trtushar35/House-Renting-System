@@ -24,11 +24,13 @@ class TenantController extends Controller
     public function store(Request $request)
     {
 
-        //   dd($request->all());
+        // dd($request->all());
 
         User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
             'role' => 'Tenant',
             'password' => bcrypt($request->password),
         ]);
@@ -78,7 +80,6 @@ class TenantController extends Controller
     {
         $bookings=Booking::where('user_id',auth()->user()->id)->get();
         $users=User::all();
-
         return view('frontend.pages.profile.profile', compact('bookings', 'users'));
     }
 
@@ -113,7 +114,8 @@ class TenantController extends Controller
             $users->update([
             'name'=>$request->name,
             'email'=>$request->email,
-            'role'=>$request->role,
+            'phone'=>$request->phone,
+            'address'=>$request->address,
             'image'=>$fileName
             
             ]);

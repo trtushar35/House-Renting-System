@@ -17,6 +17,7 @@ use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\ComplainController;
 use App\Http\Controllers\Backend\HouseOwnerController;
 use App\Http\Controllers\Backend\Review_RatingController;
+use App\Http\Controllers\Frontend\ReviewController as FrontendReviewController;
 use App\Http\Controllers\Frontend\BookingController as FrontendBookingController;
 use App\Http\Controllers\Frontend\FavoriteController as FrontendFavoriteController;
 use App\Http\Controllers\Frontend\HomeController as FrontendHomeController;
@@ -61,12 +62,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/edit-profile/{id}', [FrontendTenantController::class, 'editProfile'])->name('edit.profile');
     Route::put('/update-profile/{id}', [FrontendTenantController::class, 'updateProfile'])->name('update.profile');
 
-    Route::get('/book-now/{house_id}',[FrontendBookingController::class, 'booking'])->name('book.now');
-    Route::get('/book-cancel/{house_id}',[FrontendBookingController::class, 'cancelBooking'])->name('cancel.book');
+    Route::get('/book-now/{house_id}', [FrontendBookingController::class, 'booking'])->name('book.now');
+    Route::get('/book-cancel/{house_id}', [FrontendBookingController::class, 'cancelBooking'])->name('cancel.book');
 
     Route::get('/saved/favorite/list/{id}', [FrontendFavoriteController::class, 'favoriteList'])->name('favorite.list.view');
     Route::get('/add-to-favorite/list/{house_id}', [FrontendFavoriteController::class, 'addFavoriteList'])->name('addTofavorite.list');
 
+    Route::get('/give/review', [FrontendReviewController::class, 'review'])->name('review');
+    Route::post('/store/review', [FrontendReviewController::class, 'storeReview'])->name('store.review');
 });
 
 
@@ -81,7 +84,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::group(['middleware' => 'auth'], function () {
 
-        Route::group(['middleware' => 'checkAdmin'], function() {
+        Route::group(['middleware' => 'checkAdmin'], function () {
 
             Route::get('/admin/logout', [UserController::class, 'logout'])->name('admin.logout');
 
@@ -92,7 +95,7 @@ Route::group(['prefix' => 'admin'], function () {
             Route::post('/users/store', [UserController::class, 'store'])->name('users.store');
             Route::get('/users/delete/{id}', [UserController::class, 'delete'])->name('users.delete');
             Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
-            Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
+            Route::get('/users/view/{id}', [UserController::class, 'view'])->name('users.view');
             Route::put('/users/update/{id}', [UserController::class, 'update'])->name('users.update');
             Route::get('/users/view/{id}', [UserController::class, 'view'])->name('users.view');
 

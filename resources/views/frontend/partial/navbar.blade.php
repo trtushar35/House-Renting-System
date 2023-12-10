@@ -39,7 +39,7 @@
 
                         @auth
                         <a href="{{route('tenant.logout')}}" class="nav-item nav-link">Logout </a>
-                        <a href="{{route('profile.view')}}" class="nav-item nav-link"> Profile {{auth()->user()->role}} </a>
+                        <a href="{{route('profile.view')}}" class="nav-item nav-link"> Profile|{{auth()->user()->role}} </a>
                         @endauth
                     </div>
                 </div>

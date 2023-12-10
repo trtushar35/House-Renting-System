@@ -20,7 +20,7 @@
 
    @method('put')
   <div class="form-group">
-    <label for="">Enter User Name:</label>
+    <label for="">Edit User Name:</label>
     <input value="{{$users->name}}" type="text" class="form-control" id="" placeholder="Enter name" name="user_name" required>
     @error('user_name')
     <div class="alert alert-danger">{{ $message }}</div>
@@ -29,7 +29,7 @@
   </div>
 
   <div class="form-group">
-    <label for="">Select Role:</label>
+    <label for="">Edit Role:</label>
    <select value="{{$users->role}}" class="form-control" name="role" id="" required>
         <option value="admin">Admin</option>
         <option value="manager">Manager</option>
@@ -41,10 +41,20 @@
 
 
   <div class="form-group">
-    <label for="">Enter Email: </label>
+    <label for="">Edit Email: </label>
     <input value="{{$users->email}}" type="email" class="form-control" placeholder="Enter Email" name="user_email" required>
     
     @error('user_email')
+    <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
+    
+  </div>
+
+  <div class="form-group">
+    <label for="">Edit Phone: </label>
+    <input value="{{$users->phone}}" type="email" class="form-control" placeholder="Enter phone number" name="phone" required>
+    
+    @error('phone')
     <div class="alert alert-danger">{{ $message }}</div>
     @enderror
     

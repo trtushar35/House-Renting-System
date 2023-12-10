@@ -13,6 +13,7 @@ class FavoriteController extends Controller
 {
     public function favoriteList($id)
     {
+        // dd($id);
         $favorite=SavedProperty::with('house')->get();
         $favorite=SavedProperty::where('user_id',auth()->user()->id)->get();
         $users=User::all();

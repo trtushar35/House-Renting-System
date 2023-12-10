@@ -1,7 +1,7 @@
 @extends('backend.master')
 
 @section('content')
-<h1>Applicant List</h1>
+<h1>Booking List</h1>
 
 <table class="table table-bordered">
   <thead>
@@ -19,9 +19,9 @@
   @foreach($applicants as $applicant)
   <tbody>
     <tr>
-      <th scope="row">1</th>
-      <td>{{$applicant->user_id}}</td>
-      <td></td>
+      <th scope="row">{{$applicant->user_id}}</th>
+      <td>{{$applicant->user->name}}</td>
+      <td>{{$applicant->user->address}}</td>
       <td>{{$applicant->house->house_name}}</td>
       <td>{{$applicant->house->house_address}}</td>
       <td>{{$applicant->house->floor_number}}</td>

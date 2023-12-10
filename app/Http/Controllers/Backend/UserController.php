@@ -63,6 +63,7 @@ class UserController extends Controller
                 'role'=>$request->role,
                 'image'=>$fileName,
                 'email'=>$request->user_email,
+                'address'=>$request->address,
                 'password'=>bcrypt($request->user_password),
             ]);
 
@@ -129,6 +130,8 @@ class UserController extends Controller
             'user_name'=>'required',
             'role'=>'required',
             'user_email'=>'required|email',
+            'phone'=>'required|max:11',
+            'address'=>'required',
             'user_password'=>'required|min:6',
         ]);
 
@@ -152,7 +155,9 @@ class UserController extends Controller
             'name'=>$request->user_name,
             'role'=>$request->role,
             'image'=>$fileName,
+            'phone'=>$request->phone,
             'email'=>$request->user_email,
+            'address'=>$request->address,
             'password'=>bcrypt($request->user_password),
         ]);
 

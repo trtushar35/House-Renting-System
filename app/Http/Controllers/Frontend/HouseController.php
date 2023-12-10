@@ -23,6 +23,7 @@ class HouseController extends Controller
     {
         return view('frontend.pages.addProperty.addProperty');
     }
+    
     public function storeProperty(Request $request)
     {
         //  dd($request->all());

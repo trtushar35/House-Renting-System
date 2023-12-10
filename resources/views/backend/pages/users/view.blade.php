@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>View House Details</h1>
+<h1>View User Details</h1>
 
 <div class="container">
     <div class="row dd-flex justify-content-center">

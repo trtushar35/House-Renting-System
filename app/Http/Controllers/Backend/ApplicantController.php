@@ -14,6 +14,7 @@ class ApplicantController extends Controller
     public function list()
     {
         $applicants=Booking::with('house')->get();
+        $applicants=Booking::with('user')->get();
         $users = User::where('role', 'Tenant')->get();
         return view('backend.pages.applicant.list', compact('applicants','users'));
     }
