@@ -11,10 +11,10 @@ class HouseController extends Controller
 {
     public function singleHouseView($houseId)
     {
-
+        // dd($houseId);
         $singleHouse = House::find($houseId);
 
-        // dd($singleHouse->id);
+        // dd($singleHouse);
 
         return view('frontend.pages.house.house-view', compact('singleHouse'));
     }

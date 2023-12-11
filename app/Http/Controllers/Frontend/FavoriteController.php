@@ -17,7 +17,28 @@ class FavoriteController extends Controller
         $favorite=SavedProperty::with('house')->get();
         $favorite=SavedProperty::where('user_id',auth()->user()->id)->get();
         $users=User::all();
-        return view('frontend.pages.favoriteList',compact('favorite', 'users'));
+        return view('frontend.pages.favorite.favoriteList',compact('favorite', 'users'));
+    }
+
+    public function singleView($houseId)
+    {
+        // dd($houseId);
+        $singleHouse = SavedProperty::with('house')->find($houseId);
+
+        // dd($singleHouse);
+
+        return view('frontend.pages.favorite.singleView', compact('singleHouse'));
+    }
+
+    public function delete($id)
+    {
+        $favorite=SavedProperty::find($id);
+        if($favorite)
+        {
+            $favorite->delete();
+        }
+        notify()->success('Delete from favorite Successfully.');
+        return redirect()->back();
     }
 
     public function addFavoriteList($house_id)

@@ -10,29 +10,20 @@
 <section class="py-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="row gx-4 gx-lg-5 align-items-center">
-            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{url('/uploads/'.$singleHouse->image)}}" alt="..." /></div>
+            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{url('/uploads/'.$singleHouse->house->image)}}" alt="..." /></div>
             <div class="col-md-6">
                 <div class=" mb-1">
-                    <h1>House Name: {{$singleHouse->house_name}}</h1>
+                    <h1>House Name: {{$singleHouse->house->house_name}}</h1>
                 </div>
                 <div class=" mb-1">
-                    <h1>House Owner Name: {{$singleHouse->house_owner_name}}</h1>
+                    <h1>House Owner Name: {{$singleHouse->house->house_owner_name}}</h1>
                 </div>
-                <h3>House Address: {{$singleHouse->house_address}}</h3>
+                <h3>House Address: {{$singleHouse->house->house_address}}</h3>
                 <div class="fs-5 mb-5">
-                    <span>Rent amount: {{$singleHouse->rent_amount}}.bdt</span>
+                    <span>Rent amount: {{$singleHouse->house->rent_amount}}.bdt</span>
                 </div>
-                <p class="lead">Description: {{$singleHouse->summary}}</p>
-                <div class="d-flex">
-                    <a class="btn btn-outline-dark flex-shrink-0" type="button" href="{{route('addTofavorite.list', $singleHouse->id)}}">
-                        <i class="bi bi-heart-fill"></i>
-                        Favorite
-                    </a>
-                    <a class="btn btn-outline-dark flex-shrink-0" type="button" href="{{route('book.now', $singleHouse->id)}}">
-                        <i class="bi bi-bookmark-check-fill"></i>
-                        Book Now
-                    </a>
-                </div>
+                <p class="lead">Description: {{$singleHouse->house->summary}}</p>
+                
             </div>
         </div>
     </div>

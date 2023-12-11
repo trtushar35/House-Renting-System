@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\House;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class SavedProperty extends Model
 {
@@ -12,7 +13,7 @@ class SavedProperty extends Model
 
     public function house()
     {
-        return $this->belongsTo(House::class, "house_id", "id");
+        return $this->belongsTo(House::class, 'house_id');
     }
 
 }

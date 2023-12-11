@@ -39,7 +39,15 @@
 
                         @auth
                         <a href="{{route('tenant.logout')}}" class="nav-item nav-link">Logout </a>
-                        <a href="{{route('profile.view')}}" class="nav-item nav-link"> Profile|{{auth()->user()->role}} </a>
+
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profile</a>
+                            <div class="dropdown-menu rounded-0 m-0">
+                                <a href="{{route('profile.view')}}" class="dropdown-item">Profile|{{auth()->user()->role}}</a>
+                                <a href="{{route('bookingList.profile')}}" class="dropdown-item">Booking List</a>
+                                
+                            </div>
+                        </div>
                         @endauth
                     </div>
                 </div>

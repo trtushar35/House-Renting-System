@@ -84,6 +84,13 @@ class TenantController extends Controller
         return view('frontend.pages.profile.profile', compact('bookings', 'users'));
     }
 
+    public function bookingList()
+    {
+        $bookings=Booking::with('house')->get();
+        
+        return view('frontend.pages.profile.bookingList', compact('bookings'));
+    }
+
     public function editProfile($userId)
     {
         $users=User::find($userId);

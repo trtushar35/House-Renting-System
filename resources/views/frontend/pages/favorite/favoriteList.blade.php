@@ -32,12 +32,12 @@
                                 <p>House Owner Name: {{$savedProperty->house->house_owner_name}}</p>
                                 <p>Address: {{$savedProperty->house->house_address}}</p>
                                 <p></p>
-                                <button type="button" class="btn btn-danger btn-sm me-1 mb-2" data-mdb-toggle="tooltip" title="Remove item">
+                                <a href="{{route('favoriteList.single.delete' , $savedProperty->id)}}" type="button" class="btn btn-danger btn-sm me-1 mb-2" data-mdb-toggle="tooltip" title="Remove item">
                                     <i class="fas fa-trash"></i>
-                                </button>
+                                </a>
 
                                
-                                <a type="button" class="btn btn-primary btn-sm mb-2" href="" title="Move to the wish list">
+                                <a type="button" class="btn btn-primary btn-sm mb-2" href="{{route('single.house.view', $savedProperty->id)}}" title="Move to the wish list">
                                      view
                                 </a>
                                 <!-- Data -->

@@ -126,6 +126,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        // dd( $request->all());
         $validate=Validator::make($request->all(),[
             'user_name'=>'required',
             'role'=>'required',
