@@ -31,7 +31,7 @@ class TenantController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'address' => $request->address,
-            'role' => 'Tenant',
+            'role' => $request->role,
             'password' => bcrypt($request->password),
         ]);
 
@@ -78,15 +78,14 @@ class TenantController extends Controller
 
     public function profile()
     {
-        $bookings=Booking::where('user_id',auth()->user()->id)->get();
-        $bookings=Booking::with('house')->get();
-        $users=User::all();
-        return view('frontend.pages.profile.profile', compact('bookings', 'users'));
+        
+        return view('frontend.pages.profile.profile');
     }
 
-    public function bookingList()
+    public function bookingList($id)
     {
         $bookings=Booking::with('house')->get();
+        $bookings=Booking::where('user_id',auth()->user()->id)->get();
         
         return view('frontend.pages.profile.bookingList', compact('bookings'));
     }

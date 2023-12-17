@@ -12,6 +12,16 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Users
                             </a>
+                            
+                            <a class="nav-link" href="{{route('houseOwner.list')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                House Owner
+                            </a>
+
+                            <a class="nav-link" href="{{route('tenant.list')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Tenant
+                            </a>
 
                             <a class="nav-link" href="{{route('house.list')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
@@ -23,11 +33,6 @@
                                 Flat
                             </a>
 
-                            <a class="nav-link" href="{{route('tenant.list')}}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Tenant
-                            </a>
-
                             <a class="nav-link" href="{{route('applicant.list')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Booking List
@@ -35,7 +40,7 @@
                             
                             <a class="nav-link" href="{{route('payment.list')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Rent Collection
+                                Payment
                             </a>
 
                             <a class="nav-link" href="{{route('complain.list')}}">

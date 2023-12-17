@@ -22,6 +22,7 @@ use App\Http\Controllers\Frontend\BookingController as FrontendBookingController
 use App\Http\Controllers\Frontend\FavoriteController as FrontendFavoriteController;
 use App\Http\Controllers\Frontend\HomeController as FrontendHomeController;
 use App\Http\Controllers\Frontend\HouseController as FrontendHouseController;
+use App\Http\Controllers\Frontend\SslCommerzPaymentController;
 use App\Http\Controllers\Frontend\TenantController as FrontendTenantController;
 
 /*
@@ -57,13 +58,15 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/add/property', [FrontendHouseController::class, 'createProperty'])->name('add.property');
     Route::post('/store/property', [FrontendHouseController::class, 'storeProperty'])->name('store.property');
+    Route::get('/post-house/list/{id}', [FrontendHouseController::class, 'houseList'])->name('post.house.list');
 
     Route::get('/profile/view', [FrontendTenantController::class, 'profile'])->name('profile.view');
     Route::get('/edit-profile/{id}', [FrontendTenantController::class, 'editProfile'])->name('edit.profile');
     Route::put('/update-profile/{id}', [FrontendTenantController::class, 'updateProfile'])->name('update.profile');
-    Route::get('/profile/booking-list', [FrontendTenantController::class, 'bookingList'])->name('bookingList.profile');
+    Route::get('/profile/booking-list/{id}', [FrontendTenantController::class, 'bookingList'])->name('bookingList.profile');
 
     Route::get('/book-now/{house_id}', [FrontendBookingController::class, 'booking'])->name('book.now');
+    Route::get('/advanced-payment/{id}', [FrontendBookingController::class, 'payment'])->name('payment.now');
     Route::get('/book-cancel/{house_id}', [FrontendBookingController::class, 'cancelBooking'])->name('cancel.book');
 
     Route::get('/saved/favorite/list/{id}', [FrontendFavoriteController::class, 'favoriteList'])->name('favorite.list.view');
@@ -71,10 +74,20 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/favoriteList-single-house/{id}', [FrontendFavoriteController::class, 'singleView'])->name('single.house.view');
     Route::get('/favoriteList-single-house/delete/{id}', [FrontendFavoriteController::class, 'delete'])->name('favoriteList.single.delete');
 
-
-
     Route::get('/give/review', [FrontendReviewController::class, 'review'])->name('review');
     Route::post('/store/review', [FrontendReviewController::class, 'storeReview'])->name('store.review');
+
+    Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
+    Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+
+    Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+    Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+
+    Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+    Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+    Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+    Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 });
 
 

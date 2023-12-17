@@ -23,7 +23,7 @@
         <td>{{$key+1}}</td>
         <td>{{$singleUser->name}}</td>
         <td>{{$singleUser->email}}</td>
-        <td>{{$singleUser->phone}}</td>
+        <td>0{{$singleUser->phone}}</td>
         <td>{{$singleUser->role}}</td>
         <td>{{$singleUser->address}}</td>
         <td>

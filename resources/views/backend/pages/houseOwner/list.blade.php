@@ -11,6 +11,7 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Name</th>
+      <th scope="col">Email</th>
       <th scope="col">Phone</th>
       <th scope="col">Address</th>
       <th scope="col">Action</th>
@@ -24,8 +25,9 @@
   <tbody>
     <tr>
       <th scope="row">{{$house_owner->id}}</th>
-      <td>{{$house_owner->Name}}</td>
-      <td>{{$house_owner->phone_number}}</td>
+      <td>{{$house_owner->name}}</td>
+      <td>{{$house_owner->email}}</td>
+      <td>0{{$house_owner->phone}}</td>
       <td>{{$house_owner->address}}</td>
       <td>
         <a class="btn btn-success" href="">Edit</a>

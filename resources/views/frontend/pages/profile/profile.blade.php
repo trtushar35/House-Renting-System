@@ -8,13 +8,13 @@
         <!-- Breadcrumb -->
         <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ol class="breadcrumb">
-                
+
                 <li class="breadcrumb-item active" aria-current="page">User Profile</li>
             </ol>
         </nav>
         <!-- /Breadcrumb -->
 
-        
+
 
         <div class="row gutters-sm">
 
@@ -27,10 +27,10 @@
                                 <div class="card-body">
                                     <div class="d-flex flex-column align-items-center text-center">
                                         <div>
-                                        <img src="{{url('/uploads/'. auth()->user()->image)}}" alt="Upload Image" class="rounded-circle" width="150">
+                                            <img src="{{url('/uploads/'. auth()->user()->image)}}" alt="Upload Image" class="rounded-circle" width="150">
                                         </div>
                                         <div class="mt-3">
-                                           
+
                                         </div>
                                     </div>
                                 </div>
@@ -76,7 +76,7 @@
                         <div class="row">
                             <div class="col-sm">
                                 <a class="btn btn-info " href="{{route('edit.profile', auth()->user()->id)}}">Edit</a>
-                            </div> 
+                            </div>
                         </div>
                     </div>
                 </div>

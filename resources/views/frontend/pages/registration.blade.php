@@ -6,6 +6,16 @@
 
 
     <div class="form-group">
+        <label for="exampleInputEmail1">Select Role</label>
+        <select class="form-control" name="role" id="" required>
+            <option value="tenant">Tenant</option>
+            <option value="House Owner">House Owner</option>
+        </select>
+        @error('role')
+        <div class="alert alert-danger">{{ $message}}</div>
+        @enderror
+    </div>
+    <div class="form-group">
         <label for="exampleInputEmail1">Name</label>
         <input type="text" class="form-control" name="name" placeholder="Enter Your Name" required>
         @error('name')

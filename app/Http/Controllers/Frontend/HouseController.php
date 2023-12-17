@@ -23,10 +23,16 @@ class HouseController extends Controller
     {
         return view('frontend.pages.addProperty.addProperty');
     }
+
+    public function houseList($id)
+    {
+        $houses=House::find($id);
+        return view('frontend.pages.postHouse.list',compact('houses'));
+    }
     
     public function storeProperty(Request $request)
     {
-        //  dd($request->all());
+        // dd($request->all());
 
         $valided = Validator::make($request->all(), [
 
@@ -75,7 +81,7 @@ class HouseController extends Controller
                 'rent_amount' => $request->rent_amount,
                 'category' => $request->category,
                 'available_date' => $request->available_date,
-                'house_description' => $request->house_description,
+                'summary' => $request->summary,
                 'image' => $fileName,
 
             ]

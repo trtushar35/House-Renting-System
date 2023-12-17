@@ -41,7 +41,7 @@
 
   <div class="form-group">
     <label for="">Phone Number: </label>
-    <input required type="password" class="form-control" placeholder="Enter phone number" name="phone">  
+    <input required type="number" class="form-control" placeholder="Enter phone number" name="phone">  
     @error('phone')
     <div class="alert alert-danger">{{ $message }}</div>
     @enderror

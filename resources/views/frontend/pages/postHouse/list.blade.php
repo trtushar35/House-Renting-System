@@ -1,11 +1,6 @@
-@extends('backend.master')
+@extends('frontend.partial.other')
 
 @section('content')
-
-<h1>House List</h1>
-
-<a href="{{route('house.addNew')}}" type="button" class="btn btn-success">Add New House</a>
-
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -32,12 +27,12 @@
     </tr>
   </thead>
 
-  @foreach($houses as $key=>$house)
+  @foreach($houses as $ho)
 
   <tbody>
     <tr>
-      <th scope="row">{{$key+1}}</th>
-      <td>{{$house->house_name}}</td>
+      <th scope="row">id</th>
+      <td>{{$ho->house->house_name}}</td>
       <td>{{$house->house_owner_name}}</td>
       <td>{{$house->house_address}}</td>
       <td>{{$house->division}}</td>
@@ -69,7 +64,4 @@
   @endforeach
 
 </table>
-
-{{$houses->links()}}
-
 @endsection

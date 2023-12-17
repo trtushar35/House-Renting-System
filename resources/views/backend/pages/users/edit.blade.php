@@ -29,18 +29,6 @@
   </div>
 
   <div class="form-group">
-    <label for="">Edit Role:</label>
-   <select value="{{$users->role}}" class="form-control" name="role" id="" required>
-        <option value="admin">Admin</option>
-        <option value="manager">Manager</option>
-        <option value="tenant">Tenant</option>
-   </select>
-  </div>
-
-
-
-
-  <div class="form-group">
     <label for="">Edit Email: </label>
     <input value="{{$users->email}}" type="email" class="form-control" placeholder="Enter Email" name="user_email" required>
     
@@ -52,24 +40,20 @@
 
   <div class="form-group">
     <label for="">Edit Phone: </label>
-    <input value="{{$users->phone}}" type="email" class="form-control" placeholder="Enter phone number" name="phone" required>
-    
+    <input value="{{$users->phone}}" type="number" class="form-control" placeholder="Enter phone number" name="phone" required>    
     @error('phone')
     <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
-    
+    @enderror   
   </div>
-
 
   <div class="form-group">
-    <label for="">Enter Password: </label>
-    <input value="{{$users->password}}" type="password" class="form-control" placeholder="Enter password" name="user_password" required>
-    
-    @error('user_password')
+    <label for="">Edit Address: </label>
+    <input value="{{$users->address}}" type="text" class="form-control" placeholder="Enter address" name="address" required>    
+    @error('address')
     <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
-    
+    @enderror   
   </div>
+
 
 
   <div class="form-group">

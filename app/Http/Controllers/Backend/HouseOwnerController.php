@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Models\House;
+use App\Models\User;
 
+use App\Models\House;
 use App\Models\Owner;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -13,7 +14,7 @@ class HouseOwnerController extends Controller
     public function list()
     {
 
-        $house_owners=Owner::all();
+        $house_owners = User::where('role', 'House Owner')->get();
 
         return view('backend.pages.houseOwner.list',compact('house_owners'));
     }

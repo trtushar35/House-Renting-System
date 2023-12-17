@@ -30,7 +30,8 @@
                 @if($booking->status=='pending')
                 <a class="btn btn-danger" href="{{route('cancel.book', $booking->id)}}">Cancel Booking</a>
                 @elseif($booking->status=='Approved')
-                <a class="btn btn-success" href="">Make Payment</a>
+                <a class="btn btn-success" href="{{route('payment.now', $booking->id)}}">Make Advance Payment</a>
+                <a class="btn btn-danger" href="{{route('cancel.book', $booking->id)}}">Cancel Payment</a>
                 @endif
 
                 

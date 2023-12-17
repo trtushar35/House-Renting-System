@@ -44,7 +44,11 @@
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profile</a>
                             <div class="dropdown-menu rounded-0 m-0">
                                 <a href="{{route('profile.view')}}" class="dropdown-item">Profile|{{auth()->user()->role}}</a>
-                                <a href="{{route('bookingList.profile')}}" class="dropdown-item">Booking List</a>
+                                <a href="{{route('bookingList.profile', auth()->user()->id)}}" class="dropdown-item">Booking List</a>
+                                @if(auth()->user()->role === 'House Owner')
+                                <a href="{{route('add.property')}}" class="dropdown-item">Add Property</a>
+                                <a href="{{route('post.house.list', auth()->user()->id)}}" class="dropdown-item">Post House List</a>
+                                @endif
                                 
                             </div>
                         </div>

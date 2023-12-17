@@ -25,7 +25,7 @@
       <th scope="row">{{$key+1}}</th>
       <td>{{$tenant->name}}</td>
       <td>{{$tenant->email}}</td>
-      <td>{{$tenant->phone}}</td>
+      <td>0{{$tenant->phone}}</td>
       <td>{{$tenant->address}}</td>
       <td>
         <a class="btn btn-success" href="">Edit</a>
