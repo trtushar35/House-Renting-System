@@ -48,7 +48,7 @@
       <td>{{$house->total_bedroom}}</td>
       <td>{{$house->total_bathroom}}</td>
       <td>{{$house->rent_amount}}</td>
-      <td>{{$house->summary}}</td>
+      <td>{{$house->category}}</td>
       <td>{{$house->available_date}}</td>
       <td>{{$house->summary}}</td>
       <td>

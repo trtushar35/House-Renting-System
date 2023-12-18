@@ -27,12 +27,12 @@
     </tr>
   </thead>
 
-  @foreach($houses as $ho)
+  @foreach($houses as $key=>$house)
 
   <tbody>
     <tr>
-      <th scope="row">id</th>
-      <td>{{$ho->house->house_name}}</td>
+      <th scope="row">{{$key+1}}</th>
+      <td>{{$house->house_name}}</td>
       <td>{{$house->house_owner_name}}</td>
       <td>{{$house->house_address}}</td>
       <td>{{$house->division}}</td>
@@ -43,7 +43,7 @@
       <td>{{$house->total_bedroom}}</td>
       <td>{{$house->total_bathroom}}</td>
       <td>{{$house->rent_amount}}</td>
-      <td>{{$house->summary}}</td>
+      <td>{{$house->category}}</td>
       <td>{{$house->available_date}}</td>
       <td>{{$house->summary}}</td>
       <td>
@@ -53,7 +53,7 @@
       <td>
 
         <a class="btn btn-success" href="{{route('house.edit', $house->id)}}">Edit</a>
-        <a class="btn btn-warning" href="{{route('house.view', $house->id)}}">View</a>
+        <a class="btn btn-warning" href="{{route('applicant.view', $house->id)}}">View Applicant</a>
         <a class="btn btn-danger" href="{{route('house.delete', $house->id)}}">Delete</a>
 
       </td>

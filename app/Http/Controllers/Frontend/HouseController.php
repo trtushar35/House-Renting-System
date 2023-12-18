@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\User;
 use App\Models\House;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -25,8 +26,11 @@ class HouseController extends Controller
     }
 
     public function houseList($id)
-    {
-        $houses=House::find($id);
+    {   
+        $houses=House::where('user_id',auth()->user()->id)->get();
+
+        
+        // dd($houses);
         return view('frontend.pages.postHouse.list',compact('houses'));
     }
     
@@ -67,7 +71,7 @@ class HouseController extends Controller
 
         House::create(
             [
-
+                'user_id'=>auth()->user()->id,
                 'house_name' => $request->house_name,
                 'house_owner_name' => $request->house_owner_name,
                 'house_address' => $request->house_address,

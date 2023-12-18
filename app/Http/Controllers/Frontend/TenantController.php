@@ -84,9 +84,11 @@ class TenantController extends Controller
 
     public function bookingList($id)
     {
-        $bookings=Booking::with('house')->get();
-        $bookings=Booking::where('user_id',auth()->user()->id)->get();
+        // dd($id);
+
         
+        $bookings=Booking::where('user_id',auth()->user()->id)->get();
+        // dd($bookings);
         return view('frontend.pages.profile.bookingList', compact('bookings'));
     }
 

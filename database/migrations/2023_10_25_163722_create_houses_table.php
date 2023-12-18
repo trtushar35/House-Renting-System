@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('houses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained();
             $table->string('house_name',20);
             $table->string('house_owner_name',50);
             $table->string('house_address');

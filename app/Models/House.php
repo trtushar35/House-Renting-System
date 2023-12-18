@@ -11,5 +11,8 @@ class House extends Model
 
     protected $guarded=[];
     
+    public function bookings() {
+        return $this->hasMany(Booking::class);
+    }
 }
 

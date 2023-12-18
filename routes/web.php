@@ -17,6 +17,7 @@ use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\ComplainController;
 use App\Http\Controllers\Backend\HouseOwnerController;
 use App\Http\Controllers\Backend\Review_RatingController;
+use App\Http\Controllers\Frontend\ApplicantController as FrontendApplicantController;
 use App\Http\Controllers\Frontend\ReviewController as FrontendReviewController;
 use App\Http\Controllers\Frontend\BookingController as FrontendBookingController;
 use App\Http\Controllers\Frontend\FavoriteController as FrontendFavoriteController;
@@ -68,6 +69,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/book-now/{house_id}', [FrontendBookingController::class, 'booking'])->name('book.now');
     Route::get('/advanced-payment/{id}', [FrontendBookingController::class, 'payment'])->name('payment.now');
     Route::get('/book-cancel/{house_id}', [FrontendBookingController::class, 'cancelBooking'])->name('cancel.book');
+
+    Route::get('applicant/list/{id}', [FrontendApplicantController::class, 'applicantList'])->name('list.applicant');
+    Route::get('/applicant/view/{id}', [FrontendApplicantController::class, 'view'])->name('applicant.view');
+    Route::get('/applicant/approve/{id}', [FrontendApplicantController::class, 'approve'])->name('applicant.approve');
+    Route::get('/applicant/reject/{id}', [FrontendApplicantController::class, 'reject'])->name('applicant.do.reject');
 
     Route::get('/saved/favorite/list/{id}', [FrontendFavoriteController::class, 'favoriteList'])->name('favorite.list.view');
     Route::get('/add-to-favorite/list/{house_id}', [FrontendFavoriteController::class, 'addFavoriteList'])->name('addTofavorite.list');

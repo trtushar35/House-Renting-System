@@ -30,7 +30,7 @@ class BookingController extends Controller
         {
             $booking->update([
 
-                'status'=>'cancelled'
+                'status'=>'Booking Cancelled'
 
             ]);
         }

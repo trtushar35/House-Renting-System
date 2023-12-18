@@ -38,7 +38,6 @@
                         @endguest
 
                         @auth
-                        <a href="{{route('tenant.logout')}}" class="nav-item nav-link">Logout </a>
 
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profile</a>
@@ -49,6 +48,7 @@
                                 <a href="{{route('add.property')}}" class="dropdown-item">Add Property</a>
                                 <a href="{{route('post.house.list', auth()->user()->id)}}" class="dropdown-item">Post House List</a>
                                 @endif
+                                <a href="{{route('tenant.logout')}}" class="dropdown-item">Logout </a>
                                 
                             </div>
                         </div>

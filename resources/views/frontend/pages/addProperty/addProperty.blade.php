@@ -100,9 +100,9 @@
       <label for="">Select Category:</label>
       <select required class="form-control" name="category" id="" required> 
         <!-- <option value="">Admin</option> -->
-        <option value="family">Family</option>
-        <option value="bachelor">Bachelor</option>
-        <option value="office">Office</option>
+        <option value="Family">Family</option>
+        <option value="Bachelor">Bachelor</option>
+        <option value="Office">Office</option>
       </select>
       @error('categoy')
       <div class="alert alert-danger">{{ $message}}</div>

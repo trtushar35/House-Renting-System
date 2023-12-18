@@ -135,6 +135,7 @@ class HouseController extends Controller
         House::create(
             [
 
+            'user_id'=>auth()->user()->id,
             'house_name'=>$request->house_name,
             'house_owner_name'=>$request->house_owner_name,
             'house_address'=>$request->house_address,
