@@ -18,6 +18,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('house_id')->constrained();
             $table->string('status')->default('pending');
+            $table->string('transaction_id')->unique();
+            $table->string('payment_status');
             $table->integer('booking_amount')->nullable();
             $table->timestamps();
         });

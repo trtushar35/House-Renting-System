@@ -15,6 +15,8 @@ class BookingController extends Controller
         Booking::create([
                 'user_id'=>auth()->user()->id,
                 'house_id'=>$houseId,
+                'transaction_id'=>date('YmdHis'),
+                'payment_status'=>'pending',
             
         ]);
 
@@ -43,7 +45,7 @@ class BookingController extends Controller
         $bookings=Booking::find($id);
         // dd($bookings);
         $this-> advance_payment($bookings);
-        return redirect()->back();
+        return redirect()->route('profile.view');
 
     }
 
@@ -52,7 +54,7 @@ class BookingController extends Controller
         $post_data = array();
         $post_data['total_amount'] =(int) $payment->booking_amount; # You cant not pay less than 10
         $post_data['currency'] = "BDT";
-        $post_data['tran_id'] = uniqid(); // tran_id must be unique
+        $post_data['tran_id'] = $payment->transaction_id; // tran_id must be unique
 
         # CUSTOMER INFORMATION
         $post_data['cus_name'] = $payment->user_id;

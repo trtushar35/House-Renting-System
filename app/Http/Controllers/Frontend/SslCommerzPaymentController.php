@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use DB;
 use Illuminate\Http\Request;
 use App\Library\SslCommerz\SslCommerzNotification;
+use App\Models\Booking;
 
 class SslCommerzPaymentController extends Controller
 {
@@ -162,7 +163,9 @@ class SslCommerzPaymentController extends Controller
 
     public function success(Request $request)
     {
-        echo "Transaction is Successful";
+
+        // echo "Transaction is Successful";
+        // dd($request->all());
 
         $tran_id = $request->input('tran_id');
         $amount = $request->input('amount');
@@ -171,31 +174,37 @@ class SslCommerzPaymentController extends Controller
         $sslc = new SslCommerzNotification();
 
         #Check order status in order tabel against the transaction id or order id.
-        $order_details = DB::table('orders')
-            ->where('transaction_id', $tran_id)
-            ->select('transaction_id', 'status', 'currency', 'amount')->first();
+        $order_details = Booking::where('transaction_id', $tran_id)->first();
+        // dd($order_details);
 
-        if ($order_details->status == 'Pending') {
+        if ($order_details->payment_status == 'pending') {
+            // dd('hi');
             $validation = $sslc->orderValidate($request->all(), $tran_id, $amount, $currency);
 
             if ($validation) {
+                // dd('hjki');
+
                 /*
                 That means IPN did not work or IPN URL was not set in your merchant panel. Here you need to update order status
                 in order table as Processing or Complete.
                 Here you can also sent sms or email for successfull transaction to customer
                 */
-                $update_product = DB::table('orders')
-                    ->where('transaction_id', $tran_id)
-                    ->update(['status' => 'Processing']);
+                $order_details->update([
 
-                echo "<br >Transaction is successfully Completed";
+                    'payment_status'=>'confirm',
+                    // 'status'=>'confirm',
+                    
+                ]);
+                notify()->success('Payment Successful');
+                return redirect()->route('profile.view');
             }
-        } else if ($order_details->status == 'Processing' || $order_details->status == 'Complete') {
+        } else if ($order_details->status == 'Processing' || $order_details->status == 'confirm') {
             /*
              That means through IPN Order status already updated. Now you can just show the customer that transaction is completed. No need to udate database.
              */
             echo "Transaction is successfully Completed";
         } else {
+            dd('bye');
             #That means something wrong happened. You can redirect customer to your product page.
             echo "Invalid Transaction";
         }
