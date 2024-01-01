@@ -55,20 +55,13 @@
 
                             <a class="nav-link" href="{{route('review.rating.list')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Review & Rating
+                                Review
                             </a>
 
                             <a class="nav-link" href="{{route('report.list')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Report
                             </a>
-
-                            
-
-
-
-
-                            
                             
                     </div>
                     

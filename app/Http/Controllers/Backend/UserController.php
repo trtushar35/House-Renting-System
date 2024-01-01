@@ -118,6 +118,13 @@ class UserController extends Controller
         return view('backend.pages.users.list',compact('users'));
     }
 
+    public function print(){
+
+        $users=User::all();
+        // dd($users);
+        return view('backend.pages.users.print',compact('users'));
+    }
+
     public function addNew()
     {
         return view('backend.pages.users.addNew');

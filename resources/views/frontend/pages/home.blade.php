@@ -9,7 +9,7 @@
         <h1 class="mb-3">Property Listing</h1>
       </div>
     </div>
-    
+
   </div>
   <div class="tab-content">
     <div id="tab-1" class="tab-pane fade show p-0 active">
@@ -23,7 +23,18 @@
 
           <div class="property-item rounded overflow-hidden">
             <div class="position-relative overflow-hidden">
-              <a href="{{route('single.house', $house->id)}}"><img class="img-fluid" src="{{url('/uploads/'. $house->image)}}" alt=""></a>
+              <div class="box" style="height: 250px; width:100%;">
+                @if($house->image)
+                @foreach (explode('|', $house->image) as $image)
+                <a href="{{route('single.house', $house->id)}}">
+                  <img class="d-block" style="height: 250px; width:100%;" src="{{ url('/uploads/' . trim($image)) }}" alt="Image">
+                </a>
+                @break
+                @endforeach
+                @endif
+
+
+              </div>
               <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">{{$house->category}}</div>
               <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">Appartment</div>
             </div>

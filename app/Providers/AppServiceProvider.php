@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Review;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 
@@ -23,5 +26,11 @@ class AppServiceProvider extends ServiceProvider
     {
     
         Paginator::useBootstrap();
+
+        if(Schema::hasTable('reviews'))
+        {
+            $reviewRatings=Review::all();
+            View::share('reviewRatings', $reviewRatings );
+        }
     }
 }

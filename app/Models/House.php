@@ -14,5 +14,10 @@ class House extends Model
     public function bookings() {
         return $this->hasMany(Booking::class);
     }
+
+    public function getImagesAttribute($value)
+    {
+        return explode('|', $value);
+    }
 }
 

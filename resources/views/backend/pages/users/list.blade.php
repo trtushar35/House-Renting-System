@@ -4,6 +4,8 @@
 
 <a href="{{route('users.addNew')}}" type="button" class="btn btn-success">Create New User</a>
 
+<a href="{{route('users.print')}}" type="button" class="btn btn-success">Print</a>
+
 <table class="table table-bordered">
 <thead>
     <tr>

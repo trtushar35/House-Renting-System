@@ -3,6 +3,7 @@
 @section('content')
 
 <h1>Flat List</h1>
+<a href="{{route('flat.print')}}" class="btn btn-success">Print</a>
 
 <table class="table table-bordered">
   <thead>

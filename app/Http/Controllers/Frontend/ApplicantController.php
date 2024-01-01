@@ -29,11 +29,20 @@ class ApplicantController extends Controller
     public function approve($houseId)
     {
         $booking = Booking::find($houseId);
+        // $booking = House::find($houseId); 
         // dd($booking);
         if ($booking) {
             $booking->update([
                 'status' => 'Approved'
             ]);
+
+            $houseID = $booking->house_id;
+            // dd($houseID);
+            $house = House::find($houseID);
+            $house->update([
+                'status' => 'Approved',
+            ]);
+
         }
         notify()->success('Booking Approved.');
         return redirect()->back();

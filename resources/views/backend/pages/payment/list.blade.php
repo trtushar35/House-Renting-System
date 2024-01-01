@@ -3,6 +3,8 @@
 @section('content')
 <h1>Payment List</h1>
 
+<a href="{{route('payment.print')}}" class="btn btn-success">Print</a>
+
 <table class="table table-bordered">
 <thead>
     <tr>

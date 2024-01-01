@@ -34,7 +34,7 @@
             <!-- Product image-->
 
             <a href="{{route('single.house',$house->id)}}">
-                <img class="card-img-top" src="{{url('/uploads/'.$house->image)}}" alt="..." />
+                <img class="card-img-top" style="width:300px; height:200px;" src="{{url('/uploads/'.$house->image)}}" alt="..." />
                 <!-- Product details-->
                 <div class="card-body p-4">
                     <div class="text-center">

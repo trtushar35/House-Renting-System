@@ -6,6 +6,8 @@
 
 <a href="{{route('houseOwner.addNew')}}" type="button" class="btn btn-success">Add New Owner</a>
 
+<a href="{{route('houseOwner.print')}}" type="button" class="btn btn-success">Print</a>
+
 <table class="table table-bordered">
   <thead>
     <tr>

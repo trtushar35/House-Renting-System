@@ -32,14 +32,25 @@
     <!-- Template Stylesheet -->
     <link href="{{url('frontend/')}}/css/style.css" rel="stylesheet">
 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-btOaP0MD+ewQbFz5nqX2oAz4+4DIkLCEFeTAtWH6X9gyN8RtFV2FbItUqWdiOfBq" crossorigin="anonymous">
+
+    <!-- Bootstrap JS and dependencies (Popper.js and jQuery) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-b7K/MQsFVt9UgeIkCqloLPzX1Kt+Jvuww+rgsOfZbZBZ8vuZt1NO4mwZS5YFipN" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
     <script>
-        (function (window, document) {
-            var loader = function () {
-                var script = document.createElement("script"), tag = document.getElementsByTagName("script")[0];
+        (function(window, document) {
+            var loader = function() {
+                var script = document.createElement("script"),
+                    tag = document.getElementsByTagName("script")[0];
                 script.src = "https://sandbox.sslcommerz.com/embed.min.js?" + Math.random().toString(36).substring(7);
                 tag.parentNode.insertBefore(script, tag);
             };
-    
+
             window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload", loader);
         })(window, document);
     </script>
@@ -53,15 +64,17 @@
 
         @include('frontend.partial.navbar')
 
-        <div class="container-xxl py-5">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <!-- pages__home -->
+                    @include('notify::components.notify')
 
-            <!-- pages__home -->
-            @include('notify::components.notify')
-
-            @yield('content')
-
-
+                    @yield('content')
+                </div>
+            </div>
         </div>
+
 
         @include('frontend.partial.footer')
 

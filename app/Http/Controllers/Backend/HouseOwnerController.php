@@ -43,4 +43,10 @@ class HouseOwnerController extends Controller
 
         return redirect()->back();
     }
+
+    public function houseOwnerPrint()
+    {
+        $house_owners = User::where('role', 'House Owner')->get();
+        return view('backend.pages.houseOwner.print', compact('house_owners'));
+    }
 }

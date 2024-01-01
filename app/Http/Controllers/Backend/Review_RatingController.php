@@ -13,8 +13,15 @@ class Review_RatingController extends Controller
     public function list(){
 
         $reviews = Review::all();
-        $reviews=Review::where('user_id',auth()->user()->id)->get();
-        $users=User::all();
+        // dd($reviews);
+        $users=Review::where('user_id',auth()->user()->id)->get();
         return view('backend.pages.review_rating.list', compact('reviews', 'users'));
+    }
+
+    public function reviewPrint()
+    {
+        $reviews = Review::all();
+        $users=Review::where('user_id',auth()->user()->id)->get();
+        return view('backend.pages.review_rating.print', compact('reviews', 'users'));
     }
 }

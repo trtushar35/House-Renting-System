@@ -30,7 +30,7 @@
                                 <a href="#" class="dropdown-item">Sylhet Division</a>
                             </div>
                         </div>
-                        <a href="#" class="nav-item nav-link">About Us</a>
+                        <a href="{{route('about')}}" class="nav-item nav-link">About Us</a>
                  
                         @guest
                         <a href="{{route('tenant.login')}}" class="nav-item nav-link">Login</a>
@@ -46,7 +46,7 @@
                                 <a href="{{route('bookingList.profile', auth()->user()->id)}}" class="dropdown-item">Booking List</a>
                                 @if(auth()->user()->role === 'House Owner')
                                 <a href="{{route('add.property')}}" class="dropdown-item">Add Property</a>
-                                <a href="{{route('post.house.list', auth()->user()->id)}}" class="dropdown-item">Post House List</a>
+                                <a href="{{route('post.house.list', auth()->user()->id)}}" class="dropdown-item">Property List</a>
                                 @endif
                                 <a href="{{route('tenant.logout')}}" class="dropdown-item">Logout </a>
                                 

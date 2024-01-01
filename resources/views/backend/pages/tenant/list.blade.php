@@ -4,9 +4,10 @@
 <h1>Tenants List</h1>
 
 <a href="{{route('tenant.addNew')}}" type="button" class="btn btn-success">Add Tenant Details</a>
+<a href="{{route('tenant.print')}}" type="button" class="btn btn-success">Print</a>
 
 <table class="table table-bordered">
-<thead>
+  <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Name</th>

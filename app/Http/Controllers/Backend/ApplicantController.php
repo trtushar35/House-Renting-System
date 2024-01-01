@@ -19,6 +19,14 @@ class ApplicantController extends Controller
         return view('backend.pages.applicant.list', compact('applicants','users'));
     }
 
+    public function applicantPrint()
+    {
+        $applicants=Booking::with('house')->get();
+        $applicants=Booking::with('user')->get();
+        $users = User::where('role', 'Tenant')->get();
+        return view('backend.pages.applicant.print', compact('applicants','users'));
+    }
+
     public function confirm($houseId)
     {
         $booking=Booking::find($houseId);

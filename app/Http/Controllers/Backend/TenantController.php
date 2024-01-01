@@ -39,4 +39,10 @@ class TenantController extends Controller
 
         return redirect()->back();
     }
+
+    public function tenantPrint()
+    {
+        $tenants = User::where('role', 'Tenant')->get();
+        return view('backend.pages.tenant.print', compact('tenants'));
+    }
 }

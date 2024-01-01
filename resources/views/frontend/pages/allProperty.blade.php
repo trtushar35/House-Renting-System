@@ -1,7 +1,7 @@
 @extends('frontend.partial.other')
 
 @section('content')
-<div class="container ">
+<div class="container">
   <div class="container-fluid bg-primary mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
     <div class="container">
       <form action="{{route('house.search')}}" method="get">
@@ -30,7 +30,7 @@
   <div class="tab-content">
     <div id="tab-1" class="tab-pane fade show p-0 active">
 
-      <div class="row g-4">
+      <div class="row g-4 py-5">
 
         @foreach($houses as $house)
 
@@ -39,7 +39,7 @@
 
           <div class="property-item rounded overflow-hidden">
             <div class="position-relative overflow-hidden">
-              <a href="{{route('single.house', $house->id)}}"><img class="img-fluid" src="{{url('/uploads/'. $house->image)}}" alt=""></a>
+              <a href="{{route('single.house', $house->id)}}"><img style="height:200px; width:400px;" src="{{url('/uploads/'. $house->image)}}" alt=""></a>
               <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">{{$house->category}}</div>
               <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">Appartment</div>
             </div>

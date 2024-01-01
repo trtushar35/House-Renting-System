@@ -5,6 +5,7 @@
 <h1>House List</h1>
 
 <a href="{{route('house.addNew')}}" type="button" class="btn btn-success">Add New House</a>
+<a href="{{route('house.list.print')}}" type="button" class="btn btn-success">Print</a>
 
 <table class="table table-bordered">
   <thead>

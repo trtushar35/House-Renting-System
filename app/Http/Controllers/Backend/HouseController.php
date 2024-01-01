@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\House;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\ViewErrorBag;
 
 class HouseController extends Controller
 {
@@ -50,6 +51,12 @@ class HouseController extends Controller
         
         return view('backend.pages.house.view', compact('houses'));
 
+    }
+
+    public function housePrint()
+    {
+        $houses=House::all();
+        return view('backend.pages.house.print', compact('houses'));
     }
 
     public function update(Request $request, $id)

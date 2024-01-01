@@ -12,8 +12,9 @@ class PaymentController extends Controller
         return view('backend.pages.payment.list');
     }
 
-
-
-
+    public function paymentPrint()
+    {
+        return view('backend.pages.payment.print');
+    }
 }
 

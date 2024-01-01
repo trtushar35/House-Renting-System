@@ -13,4 +13,10 @@ class FlatController extends Controller
 
         return view('backend.pages.flat.list', compact('Flats'));
     }
+
+    public function flatPrint()
+    {
+        $Flats = House::all();
+        return view('backend.pages.flat.print', compact('Flats'));
+    }
 }

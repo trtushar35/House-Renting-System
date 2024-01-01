@@ -3,6 +3,8 @@
 @section('content')
 <h1>Booking List</h1>
 
+<a href="{{route('applicant.print')}}" class="btn btn-success">Print</a>
+
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -10,6 +12,7 @@
       <th scope="col">Applicant Name</th>
       <th scope="col">Applicant Address</th>
       <th scope="col">House Name</th>
+      <th scope="col">House Owner Name</th>
       <th scope="col">House Address</th>
       <th scope="col">Floor Number</th>
       <th scope="col">Flat Number</th>
@@ -25,6 +28,7 @@
       <td>{{$applicant->user->name}}</td>
       <td>{{$applicant->user->address}}</td>
       <td>{{$applicant->house->house_name}}</td>
+      <td>{{$applicant->house->house_owner_name}}</td>
       <td>{{$applicant->house->house_address}}</td>
       <td>{{$applicant->house->floor_number}}</td>
       <td>{{$applicant->house->flat_number}}</td>
