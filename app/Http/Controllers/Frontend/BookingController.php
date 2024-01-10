@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\House;
 use App\Models\Booking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -10,29 +11,60 @@ use App\Library\SslCommerz\SslCommerzNotification;
 
 class BookingController extends Controller
 {
-    public function booking($houseId)
+    public function booking(Request $request, $houseId)
     {
+        // dd($request->all());
+        $userId = auth()->id();
+
+        $houseOwner = House::where('id', $houseId)->where('user_id', $userId)->exists();
+
+        if ($houseOwner) {
+            // dd('You are Owner of this house');
+            notify()->error('You are Owner of this house');
+            return redirect()->route('home');
+        }
+
+        $existingBooking = Booking::where('user_id', $userId)->where('house_id', $houseId)->first();
+
+        if ($existingBooking && $existingBooking->status == 'Booking Cancelled') {
+            $existingBooking->create([
+                'user_id' => auth()->user()->id,
+                'house_id' => $houseId,
+                'message' => $request->message,
+                'transaction_id' => date('YmdHis'),
+                'payment_status' => 'pending',
+            ]);
+            notify()->success('Booking Successful.');
+            return redirect()->back();
+        }
+
+
+        if ($existingBooking) {
+            // dd('You have already booked this house.');
+            notify()->error('You have already booked this house.');
+            return redirect()->route('home');
+        }
+
         Booking::create([
-                'user_id'=>auth()->user()->id,
-                'house_id'=>$houseId,
-                'transaction_id'=>date('YmdHis'),
-                'payment_status'=>'pending',
-            
+            'user_id' => auth()->user()->id,
+            'house_id' => $houseId,
+            'message' => $request->message,
+            'transaction_id' => date('YmdHis'),
+            'payment_status' => 'pending',
+
         ]);
 
-        notify()->success('Booking Successfull.');
+        notify()->success('Booking Successful.');
         return redirect()->back();
-        
     }
 
     public function cancelBooking($houseId)
     {
-        $booking=Booking::find($houseId);
-        if($booking)
-        {
+        $booking = Booking::find($houseId);
+        if ($booking) {
             $booking->update([
 
-                'status'=>'Booking Cancelled'
+                'status' => 'Booking Cancelled'
 
             ]);
         }
@@ -42,22 +74,23 @@ class BookingController extends Controller
 
     public function payment($id)
     {
-        $bookings=Booking::find($id);
-        // dd($bookings);
-        $this-> advance_payment($bookings);
-        return redirect()->route('profile.view');
-
+        $bookings = Booking::find($id);
+        $bookingAmount = $bookings->house->rent_amount;
+        // dd($bookingAmount);
+        $this->advance_payment($bookings, $bookingAmount);
+        return redirect()->route('bookingList.profile');
     }
 
-    public function advance_payment($payment){
+    public function advance_payment($bookings, $bookingAmount)
+    {
         // dd($payment);
         $post_data = array();
-        $post_data['total_amount'] =(int) $payment->booking_amount; # You cant not pay less than 10
+        $post_data['total_amount'] = (int) $bookingAmount; # You cant not pay less than 10
         $post_data['currency'] = "BDT";
-        $post_data['tran_id'] = $payment->transaction_id; // tran_id must be unique
+        $post_data['tran_id'] = $bookings->transaction_id; // tran_id must be unique
 
         # CUSTOMER INFORMATION
-        $post_data['cus_name'] = $payment->user_id;
+        $post_data['cus_name'] = $bookings->user_id;
         $post_data['cus_email'] = 'trtushar35@gmail.com';
         $post_data['cus_add1'] = 'Customer Address';
         $post_data['cus_add2'] = "";
@@ -99,6 +132,5 @@ class BookingController extends Controller
             print_r($payment_options);
             $payment_options = array();
         }
-        
     }
 }

@@ -8,7 +8,7 @@
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">Serial</th>
       <th scope="col">Applicant Name</th>
       <th scope="col">Applicant Address</th>
       <th scope="col">House Name</th>

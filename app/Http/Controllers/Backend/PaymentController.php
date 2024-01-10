@@ -3,18 +3,21 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-
+use App\Models\Booking;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
     public function list(){
-        return view('backend.pages.payment.list');
+        $payments=Booking::with('house','user')->where('payment_status','=','confirm')->paginate(10);
+        // dd($payments);
+        return view('backend.pages.payment.list', compact('payments'));
     }
 
     public function paymentPrint()
     {
-        return view('backend.pages.payment.print');
+        $payments=Booking::with('house','user')->where('payment_status','=','confirm')->get();
+        return view('backend.pages.payment.print', compact('payments'));
     }
 }
 

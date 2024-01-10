@@ -40,7 +40,7 @@
 
   <div class="form-group">
     <label for="">Edit Phone: </label>
-    <input value="{{$users->phone}}" type="number" class="form-control" placeholder="Enter phone number" name="phone" required>    
+    <input value="0{{$users->phone}}" type="number" class="form-control" placeholder="Enter phone number" name="phone" required>    
     @error('phone')
     <div class="alert alert-danger">{{ $message }}</div>
     @enderror   

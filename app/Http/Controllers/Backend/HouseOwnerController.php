@@ -37,7 +37,6 @@ class HouseOwnerController extends Controller
                 'address' => $request->address,
                 'nid' => $request->nid,
 
-
             ]
         );
 

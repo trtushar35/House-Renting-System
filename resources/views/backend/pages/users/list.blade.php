@@ -9,7 +9,7 @@
 <table class="table table-bordered">
 <thead>
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">Serial</th>
       <th scope="col">Name</th>
       <th scope="col">Email</th>
       <th scope="col">Phone</th>
@@ -22,7 +22,7 @@
 
   @foreach ($users as $key=>$singleUser)
     <tr>
-        <td>{{$key+1}}</td>
+        <td>{{$loop->iteration}}</td>
         <td>{{$singleUser->name}}</td>
         <td>{{$singleUser->email}}</td>
         <td>0{{$singleUser->phone}}</td>

@@ -64,8 +64,7 @@ class TenantController extends Controller
 
         $credentials = $request->except('_token');
 
-        if (auth()->attempt($credentials)) 
-        {
+        if (auth()->attempt($credentials)) {
             // dd($credentials);
 
             notify()->success('Login Successfully.');
@@ -78,59 +77,54 @@ class TenantController extends Controller
 
     public function profile()
     {
-        
+
         return view('frontend.pages.profile.profile');
     }
 
     public function bookingList($id)
     {
-        // dd($id);
+        // dd($id);  
 
-        
-        $bookings=Booking::where('user_id',auth()->user()->id)->get();
+        $bookings = Booking::with('house.user')->where('user_id', auth()->user()->id)->get();
         // dd($bookings);
         return view('frontend.pages.profile.bookingList', compact('bookings'));
     }
 
     public function editProfile($userId)
     {
-        $users=User::find($userId);
+        $users = User::find($userId);
 
-        return view('frontend.pages.profile.editProfile',compact('users'));
-        
+        return view('frontend.pages.profile.editProfile', compact('users'));
     }
 
     public function updateProfile(Request $request, $userId)
     {
         //  dd($request);
 
-        $users=User::find($userId); 
+        $users = User::find($userId);
 
-        if($users)
-        {
-            $fileName=$users->image;
-        
-            if($request->hasFile('image'))
-            {
-              $file=$request->file('image');
-              $fileName=date('Ymdhis').'.'.$file->getClientOriginalExtension();
-             
-              $file->storeAs('/uploads',$fileName);
-    
+        if ($users) {
+            $fileName = $users->image;
+
+            if ($request->hasFile('image')) {
+                $file = $request->file('image');
+                $fileName = date('Ymdhis') . '.' . $file->getClientOriginalExtension();
+
+                $file->storeAs('/uploads', $fileName);
             }
-        
-          
+
+
             $users->update([
-            'name'=>$request->name,
-            'email'=>$request->email,
-            'phone'=>$request->phone,
-            'address'=>$request->address,
-            'image'=>$fileName
-            
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'address' => $request->address,
+                'image' => $fileName
+
             ]);
 
-          notify()->success('Updated successfully.');
-          return redirect()->route('profile.view');
+            notify()->success('Updated successfully.');
+            return redirect()->route('profile.view');
         }
     }
 
@@ -138,7 +132,7 @@ class TenantController extends Controller
     public function logout()
     {
         auth()->logout();
-        notify()->success('Logout Success.');    
+        notify()->success('Logout Success.');
         return redirect()->route('home');
     }
 }

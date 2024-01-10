@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            // $table->unsignedBigInteger('user_id');
-            // $table->foreign('user_id')->references('id')->on('users')->cascadeOnUpdate()->restrictOnDelete();
+            
             $table->foreignId('user_id')->constrained();
             $table->foreignId('house_id')->constrained();
             $table->string('status')->default('pending');
             $table->string('transaction_id')->unique();
             $table->string('payment_status');
             $table->integer('booking_amount')->nullable();
+            $table->text('message')->nullable();
             $table->timestamps();
         });
     }

@@ -36,23 +36,27 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
+                            <th scope="col">Serial</th>
                             <th scope="col">Name</th>
+                            <th scope="col">House Owner Name</th>
                             <th scope="col">Payment Method</th>
                             <th scope="col">Payment Amount</th>
                         </tr>
                     </thead>
 
 
+                    @foreach($payments as $payment)
                     <tbody>
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>01545</td>
-                            <td>01545</td>
-                        </tr>
+                            <th scope="row">{{$loop->iteration}}</th>
+                            <td>{{$payment->user->name}}</td>
+                            <td>{{$payment->house->house_owner_name}}</td>
+                            <td>bKash</td>
+                            <td>{{$payment->booking_amount}}</td>
 
+                        </tr>
                     </tbody>
+                    @endforeach
 
 
                     <script>

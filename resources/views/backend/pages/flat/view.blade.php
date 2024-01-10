@@ -16,9 +16,6 @@
                         <h4 class="ms-1"><strong>Flat Number:</strong> {{$houses->flat_number}}</h4>
                         <h4 class="ms-1"><strong>Total Bathroom:</strong> {{$houses->total_bathroom}}</h4>
                         <h4 class="ms-1"><strong>Total Bathroom:</strong> {{$houses->total_bathroom}}</h4>
-                        <h4 class="ms-1"><strong>Division:</strong> {{$houses->division}}</h4>
-                        <h4 class="ms-1"><strong>District:</strong> {{$houses->district}}</h4>
-                        <h4 class="ms-1"><strong>Thana:</strong> {{$houses->thana}}</h4>
                         <h4 class="ms-1"><strong>House short Address:</strong> {{$houses->house_address}}</h4>
                         <h4 class="ms-1"><strong>Rent Amount:</strong> {{$houses->rent_amount}} BDT</h4>
 

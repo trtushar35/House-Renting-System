@@ -39,13 +39,19 @@
       <td>{{$house->rent_amount}}</td>
       <td>{{$house->category}}</td>
       <td>
-        <img width="100%" src="{{url('/uploads/'. $house->image)}}" alt="image">
+        @if($house->image)
+        @foreach (explode('|', $house->image) as $image)
+
+        <img class="d-block" style="height: 50px; width:100%;" src="{{ url('/uploads/' . trim($image)) }}" alt="Image">
+        <br>
+        @endforeach
+        @endif
       </td>
       <td>{{$house->status}}</td>
       <td>
 
         <a class="btn btn-success" href="{{route('house.edit', $house->id)}}">Edit</a>
-        <a class="btn btn-warning" href="{{route('house.view', $house->id)}}">View</a>
+        <a class="btn btn-warning" href="{{route('flat.view', $house->id)}}">View</a>
         <a class="btn btn-danger" href="{{route('house.delete', $house->id)}}">Delete</a>
 
       </td>

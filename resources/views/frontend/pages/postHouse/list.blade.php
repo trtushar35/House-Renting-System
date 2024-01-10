@@ -50,17 +50,21 @@
             <td>{{$house->available_date}}</td>
             <td>{{$house->summary}}</td>
             <td>
-              <img style="height: 40px; width: 30px;" src="{{url('/uploads/'. $house->image)}}" alt="image">
+              @if($house->image)
+              @foreach (explode('|', $house->image) as $image)
+
+              <img class="d-block" style="height: 50px; width:100%;" src="{{ url('/uploads/' . trim($image)) }}" alt="Image">
+              <br>
+              @endforeach
+              @endif
             </td>
             <td>{{$house->status}}</td>
             <td>
               <div class="row">
                 <div class="col">
-                  <a class="btn btn-sm btn-success mb-2" href=""><i class="bi bi-pencil"></i></a>
+                  <a class="btn btn-sm btn-success mb-2" href="{{route('post.house.edit', $house->id)}}"><i class="bi bi-pencil"></i></a>
                   <a class="btn btn-sm btn-warning mb-2" href="{{route('applicant.view', $house->id)}}"><i class="bi bi-eye-fill"></i></a>
-                  <a class="btn btn-sm btn-danger mb-2s" href="{{route('house.delete', $house->id)}}"><i class="bi bi-archive"></i></a>
-
-
+                  <a class="btn btn-sm btn-danger mb-2s" href="{{route('post.house.delete', $house->id)}}"><i class="bi bi-archive"></i></a>
                 </div>
               </div>
 

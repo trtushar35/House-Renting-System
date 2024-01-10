@@ -22,10 +22,10 @@ class User extends Authenticatable
     //     'role',
     //     'email',
     //     'password',
-        
+
     // ];
 
-    protected $guarded=[];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -47,7 +47,8 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-        public function bookings() {
-            return $this->hasMany(Booking::class);
-        }
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
 }

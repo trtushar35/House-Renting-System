@@ -65,13 +65,17 @@ Route::group(['middleware' => 'checkUser'], function () {
     Route::get('/add/property', [FrontendHouseController::class, 'createProperty'])->name('add.property');
     Route::post('/store/property', [FrontendHouseController::class, 'storeProperty'])->name('store.property');
     Route::get('/post-house/list/{id}', [FrontendHouseController::class, 'houseList'])->name('post.house.list');
+    Route::get('/post-house/edit/{id}', [FrontendHouseController::class, 'houseEdit'])->name('post.house.edit');
+    Route::post('/post-house/update/{id}', [FrontendHouseController::class, 'houseUpdate'])->name('post.house.update');
+    Route::get('/post-house/delete/{id}', [FrontendHouseController::class, 'delete'])->name('post.house.delete');
 
     Route::get('/profile/view', [FrontendTenantController::class, 'profile'])->name('profile.view');
     Route::get('/edit-profile/{id}', [FrontendTenantController::class, 'editProfile'])->name('edit.profile');
     Route::put('/update-profile/{id}', [FrontendTenantController::class, 'updateProfile'])->name('update.profile');
-    Route::get('/profile/booking-list/{id}', [FrontendTenantController::class, 'bookingList'])->name('bookingList.profile');
 
-    Route::get('/book-now/{house_id}', [FrontendBookingController::class, 'booking'])->name('book.now');
+    Route::get('/profile/booking-list/{id}', [FrontendTenantController::class, 'bookingList'])->name('bookingList.profile');
+    Route::get('/profile/booking-list/print/{id}', [FrontendTenantController::class, 'print'])->name('bookingList.print');
+    Route::post('/book-now/{house_id}', [FrontendBookingController::class, 'booking'])->name('book.now');
     Route::get('/advanced-payment/{id}', [FrontendBookingController::class, 'payment'])->name('payment.now');
     Route::get('/book-cancel/{house_id}', [FrontendBookingController::class, 'cancelBooking'])->name('cancel.book');
 
@@ -85,15 +89,19 @@ Route::group(['middleware' => 'checkUser'], function () {
     Route::get('/favoriteList-single-house/{id}', [FrontendFavoriteController::class, 'singleView'])->name('single.house.view');
     Route::get('/favoriteList-single-house/delete/{id}', [FrontendFavoriteController::class, 'delete'])->name('favoriteList.single.delete');
 
-    Route::get('/give/review', [FrontendReviewController::class, 'review'])->name('review'); 
+    Route::get('/give/review', [FrontendReviewController::class, 'review'])->name('review');
     Route::post('/store/review', [FrontendReviewController::class, 'storeReview'])->name('store.review');
+    Route::get('/review/list/{id}', [FrontendReviewController::class, 'reviewList'])->name('review.list');
+    Route::get('/review/delete/{id}', [FrontendReviewController::class, 'reviewDelete'])->name('review.delete');
+    Route::get('/review/edit/{id}', [FrontendReviewController::class, 'reviewEdit'])->name('review.edit');
+    Route::post('/review/update/{id}', [FrontendReviewController::class, 'reviewUpdate'])->name('review.update');
 
     Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
     Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
-    
+
     Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
     Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
-    
+
     Route::post('/success', [SslCommerzPaymentController::class, 'success']);
     Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
     Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
@@ -162,12 +170,14 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('/service/create', [ServiceController::class, 'create'])->name('service.create');
             Route::post('/service/store', [ServiceController::class, 'store'])->name('service.store');
 
-            Route::get('/review_rating/list', [Review_RatingController::class, 'list'])->name('review.rating.list');
-            Route::get('/review_rating/print', [Review_RatingController::class, 'reviewPrint'])->name('review.rating.print');
+            Route::get('/review/list', [Review_RatingController::class, 'list'])->name('review.rating.list');
+            Route::get('/review/delete/{id}', [Review_RatingController::class, 'delete'])->name('review.rating.delete');
+            Route::get('/review/print', [Review_RatingController::class, 'reviewPrint'])->name('review.rating.print');
 
             Route::get('/report/list', [ReportController::class, 'list'])->name('report.list');
 
             Route::get('/flat/list', [FlatController::class, 'list'])->name('flat.list');
+            Route::get('/flat/view/{house_id}', [FlatController::class, 'view'])->name('flat.view');
             Route::get('/flat/print', [FlatController::class, 'flatPrint'])->name('flat.print');
         });
     });

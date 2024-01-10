@@ -8,6 +8,7 @@ use App\Models\House;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ViewErrorBag;
+use Illuminate\Support\Facades\DB;
 
 class HouseController extends Controller
 {
@@ -29,6 +30,7 @@ class HouseController extends Controller
     public function delete($id) 
     {
         $houses=House::find($id);
+        DB::table('bookings')->where('house_id', $houses->id)->delete();
         if($houses)
         {
             $houses->delete();

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use DB;
-use Illuminate\Http\Request;
-use App\Library\SslCommerz\SslCommerzNotification;
 use App\Models\Booking;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Library\SslCommerz\SslCommerzNotification;
 
 class SslCommerzPaymentController extends Controller
 {
@@ -171,16 +172,18 @@ class SslCommerzPaymentController extends Controller
         $amount = $request->input('amount');
         $currency = $request->input('currency');
 
+        // dd($tran_id,$amount, $currency);
         $sslc = new SslCommerzNotification();
 
         #Check order status in order tabel against the transaction id or order id.
-        $order_details = Booking::where('transaction_id', $tran_id)->first();
+        $order_details = Booking::with('house')->where('transaction_id', $tran_id)->first();
         // dd($order_details);
 
         if ($order_details->payment_status == 'pending') {
             // dd('hi');
             $validation = $sslc->orderValidate($request->all(), $tran_id, $amount, $currency);
 
+            // dd();
             if ($validation) {
                 // dd('hjki');
 
@@ -192,7 +195,7 @@ class SslCommerzPaymentController extends Controller
                 $order_details->update([
 
                     'payment_status'=>'confirm',
-                    // 'status'=>'confirm',
+                    'booking_amount'=>$amount,
                     
                 ]);
                 notify()->success('Payment Successful');
@@ -204,7 +207,7 @@ class SslCommerzPaymentController extends Controller
              */
             echo "Transaction is successfully Completed";
         } else {
-            dd('bye');
+            // dd('bye');
             #That means something wrong happened. You can redirect customer to your product page.
             echo "Invalid Transaction";
         }

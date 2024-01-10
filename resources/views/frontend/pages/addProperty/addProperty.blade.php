@@ -112,7 +112,8 @@
           <select required class="form-control" name="category" id="" required>
             <!-- <option value="">Admin</option> -->
             <option value="Family">Family</option>
-            <option value="Bachelor">Bachelor</option>
+            <option value="Bachelor_male">Bachelor Male</option>
+            <option value="Bachelor_female">Bachelor Female</option>
             <option value="Office">Office</option>
           </select>
           @error('categoy')

@@ -76,7 +76,13 @@
                             <td>{{$house->available_date}}</td>
                             <td>{{$house->summary}}</td>
                             <td>
-                                <img width="100%" src="{{url('/uploads/'. $house->image)}}" alt="image">
+                                @if($house->image)
+                                @foreach (explode('|', $house->image) as $image)
+
+                                <img class="d-block" style="height: 50px; width:100%;" src="{{ url('/uploads/' . trim($image)) }}" alt="Image">
+                                <br>
+                                @endforeach
+                                @endif
                             </td>
                             <td>{{$house->status}}</td>
                         </tr>

@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\House;
 use App\Models\Booking;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
@@ -17,8 +18,9 @@ class HouseController extends Controller
         $singleHouse = House::find($houseId);
 
         // dd($singleHouse->image);
-
-        return view('frontend.pages.house.house-view', compact('singleHouse'));
+        $similarHouses = House::where('category', $singleHouse->category)->where('status', '=', 'Available')->where('house_address', $singleHouse->house_address)->where('id', '!=', $singleHouse->id)->inRandomOrder()->limit(4)->get();
+        // dd($similarHouses);
+        return view('frontend.pages.house.house-view', compact('singleHouse', 'similarHouses'));
     }
 
     public function createProperty()
@@ -30,10 +32,69 @@ class HouseController extends Controller
     {
         $houses = House::where('user_id', auth()->user()->id)->get();
 
-
         // dd($houses);
         return view('frontend.pages.postHouse.list', compact('houses'));
     }
+
+    public function houseEdit($houseId)
+    {
+        // dd($houseId);
+        $houses=House::find($houseId);
+        return view('frontend.pages.postHouse.edit', compact('houses'));
+    }
+
+    public function delete($id) 
+    {
+        $houses=House::find($id);
+        if($houses)
+        {
+            $houses->delete();
+        }
+        notify()->success('Post House delete Successfully.');
+        return redirect()->back();
+    }
+
+    public function houseUpdate(Request $request, $id)
+    {
+        // dd($request->all(),$id);
+        $houses=House::find($id); 
+
+        if($houses)
+        {
+            $fileName=$houses->image;
+        
+            if($request->hasFile('image'))
+            {
+              $file=$request->file('image');
+              $fileName=date('Ymdhis').'.'.$file->getClientOriginalExtension();
+             
+              $file->storeAs('/uploads',$fileName);
+            }
+        
+          
+            $houses->update([
+            'house_name'=>$request->house_name,
+            'house_owner_name'=>$request->house_owner_name,
+            'house_address'=>$request->house_address,
+            'division'=>$request->division,
+            'district'=>$request->district,
+            'thana'=>$request->thana,
+            'floor_number'=>$request->floor_number,
+            'flat_number'=>$request->flat_number,
+            'total_bedroom'=>$request->total_bedroom,
+            'total_bathroom'=>$request->total_bathroom,
+            'rent_amount'=>$request->rent_amount,
+            'category'=>$request->category,
+            'available_date'=>$request->available_date,
+            'summary'=>$request->summary,
+            'image'=>$fileName            
+            ]);
+
+          notify()->success('House updated successfully.');
+          return redirect()->route('post.house.list',$id);
+        }
+             
+    } 
 
     public function storeProperty(Request $request)
     {
@@ -72,7 +133,7 @@ class HouseController extends Controller
             }
         }
 
-        
+
         House::create(
             [
                 'user_id' => auth()->user()->id,
@@ -90,7 +151,7 @@ class HouseController extends Controller
                 'category' => $request->category,
                 'available_date' => $request->available_date,
                 'summary' => $request->summary,
-                'image' => implode("|",$imagePaths),
+                'image' => implode("|", $imagePaths),
 
             ]
         );

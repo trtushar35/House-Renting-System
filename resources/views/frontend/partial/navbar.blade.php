@@ -48,6 +48,7 @@
                                 <a href="{{route('add.property')}}" class="dropdown-item">Add Property</a>
                                 <a href="{{route('post.house.list', auth()->user()->id)}}" class="dropdown-item">Property List</a>
                                 @endif
+                                <a href="{{route('review.list', auth()->user()->id)}}" class="dropdown-item">Review</a>
                                 <a href="{{route('tenant.logout')}}" class="dropdown-item">Logout </a>
                                 
                             </div>

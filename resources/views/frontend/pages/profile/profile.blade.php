@@ -60,7 +60,7 @@
                                 <h6 class="mb-0">Phone</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                {{auth()->user()->phone}}
+                                0{{auth()->user()->phone}}
                             </div>
                         </div>
                         <hr>

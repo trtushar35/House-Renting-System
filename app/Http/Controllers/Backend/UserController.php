@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
@@ -17,6 +18,7 @@ class UserController extends Controller
     public function delete($id)
     {
         $users=User::find($id);
+        DB::table('bookings')->where('user_id', $users->id)->delete();
         if($users)
         {
             $users->delete();
@@ -38,7 +40,7 @@ class UserController extends Controller
         $users=User::find($id);
 
         return view('backend.pages.users.view', compact('users'));
-        
+
     }
 
     public function update(Request $request, $id)
@@ -60,11 +62,9 @@ class UserController extends Controller
 
             $users->update([
                 'name'=>$request->user_name,
-                'role'=>$request->role,
                 'image'=>$fileName,
                 'email'=>$request->user_email,
                 'address'=>$request->address,
-                'password'=>bcrypt($request->user_password),
             ]);
 
             notify()->success('Users updated successfully.');

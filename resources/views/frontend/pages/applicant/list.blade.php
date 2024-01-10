@@ -31,7 +31,7 @@
       <td>{{$applicant->booking_amount}}</td>
       <td>{{$applicant->status}}</td>
       @if($applicant->status=='pending')
-      <td>      
+      <td>
         <a class="btn btn-success" href="{{route('applicant.confirm', $applicant->id)}}">Accept</a>
         <a class="btn btn-danger" href="{{route('applicant.reject', $applicant->id)}}">Reject </a>
       </td>

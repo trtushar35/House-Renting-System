@@ -3,13 +3,13 @@
 @section('content')
 <h1>Tenants List</h1>
 
-<a href="{{route('tenant.addNew')}}" type="button" class="btn btn-success">Add Tenant Details</a>
+
 <a href="{{route('tenant.print')}}" type="button" class="btn btn-success">Print</a>
 
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">Serial</th>
       <th scope="col">Name</th>
       <th scope="col">Email</th>
       <th scope="col">Phone Number</th>
@@ -29,8 +29,8 @@
       <td>0{{$tenant->phone}}</td>
       <td>{{$tenant->address}}</td>
       <td>
-        <a class="btn btn-success" href="">Edit</a>
-        <a class="btn btn-danger" href="">Delete</a>
+        <a class="btn btn-success" href="{{route('users.edit',$tenant->id)}}">Edit</a>
+        <a class="btn btn-danger" href="{{route('users.delete',$tenant->id)}}">Delete</a>
       </td>
     </tr>
 

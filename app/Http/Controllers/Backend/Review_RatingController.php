@@ -10,18 +10,29 @@ use App\Http\Controllers\Controller;
 
 class Review_RatingController extends Controller
 {
-    public function list(){
+    public function list()
+    {
 
         $reviews = Review::all();
         // dd($reviews);
-        $users=Review::where('user_id',auth()->user()->id)->get();
+        $users = Review::where('user_id', auth()->user()->id)->get();
         return view('backend.pages.review_rating.list', compact('reviews', 'users'));
+    }
+
+    public function delete($id)
+    {
+        $reviews = Review::find($id);
+        if ($reviews) {
+            $reviews->delete();
+        }
+        notify()->success('Review delete successfully.');
+        return redirect()->route('review.rating.list');
     }
 
     public function reviewPrint()
     {
         $reviews = Review::all();
-        $users=Review::where('user_id',auth()->user()->id)->get();
+        $users = Review::where('user_id', auth()->user()->id)->get();
         return view('backend.pages.review_rating.print', compact('reviews', 'users'));
     }
 }

@@ -1,13 +1,13 @@
-@extends('backend.master')
+@extends('frontend.partial.other')
 
 @section('content')
 
 <h1>Edit Your House Details</h1>
 
-<form action="{{route('house.update', $houses->id)}}" method="post" enctype="multipart/form-data">
+<form action="{{route('post.house.update', $houses->id)}}" method="post" enctype="multipart/form-data">
   @csrf
 
-  @method('put')
+
 
   <div class="form-row">
     <div class="col-md-4 mb-3">

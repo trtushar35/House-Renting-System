@@ -27,8 +27,8 @@
         <td>{{$review->user->name}}</td>
         <td>{{$review->review}}</td>
         <td>
-          <a class="btn btn-success" href="">view</a>
-          <a class="btn btn-danger" href="">Delete</a>
+          
+          <a class="btn btn-danger" href="{{route('review.rating.delete', $review->id)}}">Delete</a>
         </td>
       </tr>
 

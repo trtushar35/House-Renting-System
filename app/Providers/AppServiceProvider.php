@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
     
-        Paginator::useBootstrap();
+        Paginator::useBootstrap('pagination::bootstrap-4');
 
         if(Schema::hasTable('reviews'))
         {
