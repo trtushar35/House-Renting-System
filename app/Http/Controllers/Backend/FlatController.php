@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Models\House;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -26,5 +27,22 @@ class FlatController extends Controller
     {
         $Flats = House::all();
         return view('backend.pages.flat.print', compact('Flats'));
+    }
+
+    public function contact()
+    {
+        $contacts = Contact::all();
+        return view('backend.pages.contact.list', compact('contacts'));
+    }
+
+    public function delete($id)
+    {
+        // dd($id);
+        $contacts = Contact::find($id);
+        if ($contacts) {
+            $contacts->delete();
+        }
+        notify()->success('Delete successful.');
+        return redirect()->route('contacts.list');
     }
 }

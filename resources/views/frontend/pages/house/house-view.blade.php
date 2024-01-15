@@ -59,7 +59,7 @@
             <hr>
             <h4>Address</h4>
             <hr>
-            <h6 class="card-text">Division: {{$singleHouse->house_name}}</h6>
+            <h6 class="card-text">Division: {{$singleHouse->division}}</h6>
             <h6 class="card-text">District: {{$singleHouse->district}}</h6>
             <h6 class="card-text">Thana: {{$singleHouse->thana}}</h6>
             <h6 class="card-text">Short Address: {{$singleHouse->house_address}}</h6>

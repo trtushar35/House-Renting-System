@@ -15,6 +15,7 @@
             </div>
             <div class="col-lg-3 col-md-6">
                 <h5 class="text-white mb-4">Quick Links</h5>
+                <a class="btn btn-link text-white-50" href="{{route('terms.condition')}}">Home</a>
                 <a class="btn btn-link text-white-50" href="{{route('about')}}">About Us</a>
                 <a class="btn btn-link text-white-50" href="{{route('contact.us')}}">Contact Us</a>
                 <a class="btn btn-link text-white-50" href="{{route('privacy.policy')}}">Privacy Policy</a>
@@ -51,18 +52,11 @@
     </div>
     <div class="container">
         <div class="copyright">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+            <div class="row" >
+                <div class="col-md-12 text-center md-0">
                     <p> &copy; House Rent, All Right Reserved. Designed By Md. Tahmidur Rahman Tushar</p>
                 </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <div class="footer-menu">
-                        <a href="{{route('home')}}">Home</a>
-                        <a href="{{route('terms.condition')}}">Terms & Condition</a>
-                        <a href="">Help</a>
-                        <a href="">FQAs</a>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>

@@ -18,7 +18,14 @@
                             <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
                                 <!-- Image -->
                                 <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
-                                    <img src="{{url('/uploads/'. $savedProperty->house->image)}}" class="w-100" alt="house id:{{$savedProperty->house_id}}" />
+                                    @if($savedProperty->house->image)
+                                    @foreach (explode('|', $savedProperty->house->image) as $image)
+                                    <img class="d-block" style="height: 250px; width:100%;" src="{{ url('/uploads/' . trim($image)) }}" alt="Image">
+                                    @break
+                                    @endforeach
+                                    @else
+                                    <img class="d-block" style="height: 250px; width:100%;" src="{{ url('/uploads/noimage.jpg') }}" alt="Image">
+                                    @endif
                                     <a href="">
                                         <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
                                     </a>
@@ -36,16 +43,16 @@
                                     <i class="fas fa-trash"></i>
                                 </a>
 
-                               
+
                                 <a type="button" class="btn btn-primary btn-sm mb-2" href="{{route('single.house.view', $savedProperty->id)}}" title="Move to the wish list">
-                                     view
+                                    view
                                 </a>
                                 <!-- Data -->
                             </div>
 
                             <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                                 <!-- Quantity -->
-                                
+
                                 <!-- Quantity -->
 
                                 <!-- Price -->
@@ -55,20 +62,20 @@
                                 <!-- Price -->
                             </div>
                         </div>
-                       
+
                         <!-- Single item -->
 
                         <hr class="my-4" />
                         @endforeach
                         <!-- Single item -->
-                        
+
                         <!-- Single item -->
                     </div>
                 </div>
 
 
             </div>
-            
+
         </div>
     </div>
 </section>

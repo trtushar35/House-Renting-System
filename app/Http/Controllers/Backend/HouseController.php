@@ -15,7 +15,7 @@ class HouseController extends Controller
     public function list()
     {
 
-        $houses=House::paginate(5);
+        $houses=House::orderBy('id','desc')->paginate(5);
         // $house_owners=House_Owner::all();
 
         return view('backend.pages.house.list', compact('houses'));

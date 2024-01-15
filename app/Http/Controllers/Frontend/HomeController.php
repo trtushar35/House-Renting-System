@@ -84,11 +84,36 @@ class HomeController extends Controller
             ]
         );
 
-        notify()->success('Thanks for contact with us.');
+        notify()->success('You will get respond soon.');
         return redirect()->back();
     }
     public function privacyPolicy()
     {
         return view('frontend.pages.privacy');
+    }
+
+    public function dhaka()
+    {
+        $houses=House::where('division','=', 'Dhaka')->get();
+        // dd($dhaka);
+        return view('frontend.pages.division.dhaka', compact('houses'));
+    }
+    public function mymensingh()
+    {
+        $houses=House::where('division','=', 'Mymensingh')->get();
+        // dd($dhaka);
+        return view('frontend.pages.division.mymensingh', compact('houses'));
+    }
+    public function khulna()
+    {
+        $houses=House::where('division','=', 'Khulna')->get();
+        // dd($dhaka);
+        return view('frontend.pages.division.khulna', compact('houses'));
+    }
+    public function rajshahi()
+    {
+        $houses=House::where('division','=', 'Rajshahi')->get();
+        // dd($dhaka);
+        return view('frontend.pages.division.rajshahi', compact('houses'));
     }
 }

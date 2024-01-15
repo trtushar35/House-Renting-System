@@ -20,8 +20,12 @@ class homeController extends Controller
         $houses=House::count();
         $available=House::where('status', 'Available')->count();
         $bookings=Booking::count();
+        $cancelBookings=Booking::where('status', 'Booking Cancelled')->count();
+        $approvedBookings=Booking::where('status', 'Approved')->count();
+        $rejectBookings=Booking::where('status', 'Rejected')->count();
+        $totalPayment=Booking::where('payment_status', 'confirm')->count();
         $booked=Booking::where('payment_status', 'confirm')->count();
         // dd($booked);
-        return view('backend.home', compact('users', 'tenants', 'owners', 'houses', 'admins', 'available','bookings','booked'));
+        return view('backend.home', compact('users', 'tenants', 'owners', 'houses', 'admins', 'available','bookings','booked', 'cancelBookings', 'approvedBookings','totalPayment', 'rejectBookings'));
     }
 }

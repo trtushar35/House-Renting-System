@@ -118,6 +118,62 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-3 d-flex mt-4">
+            <div class="card flex-fill shadow">
+                <div class="card-body py-4">
+                    <div class="d-flex align-items-start">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-2">
+                                {{$cancelBookings}} <i class="fas fa-calendar-alt" style="margin-left: 200px;"></i>
+                            </h3>
+                            <p class="mb-2">Total Cancelled Bookings</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 d-flex mt-4">
+            <div class="card flex-fill shadow">
+                <div class="card-body py-4">
+                    <div class="d-flex align-items-start">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-2">
+                                {{$approvedBookings}} <i class="fas fa-calendar-alt" style="margin-left: 200px;"></i>
+                            </h3>
+                            <p class="mb-2">Total Approved Bookings</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 d-flex mt-4">
+            <div class="card flex-fill shadow">
+                <div class="card-body py-4">
+                    <div class="d-flex align-items-start">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-2">
+                                {{$rejectBookings}} <i class="fas fa-calendar-alt" style="margin-left: 200px;"></i>
+                            </h3>
+                            <p class="mb-2">Total Rejected Bookings</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 d-flex mt-4">
+            <div class="card flex-fill shadow">
+                <div class="card-body py-4">
+                    <div class="d-flex align-items-start">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-2">
+                                {{$totalPayment}} <i class="fas fa-calendar-alt" style="margin-left: 200px;"></i>
+                            </h3>
+                            <p class="mb-2">Total Payments</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

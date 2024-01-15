@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>House Rent</title>
 </head>
 
 <body>
@@ -75,7 +75,7 @@
         </div>
 
         <div class="col-md-12 mb-3">
-          <label for="validationDefault01">flat Number</label>
+          <label for="validationDefault01">Flat Number</label>
           <input type="text" class="form-control" id="validationDefault01" placeholder="Flat Number" name="flat_number" required>
           @error('flat_number')
           <div class="alert alert-danger">{{ $message}}</div>

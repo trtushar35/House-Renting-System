@@ -33,11 +33,11 @@
     </tr>
   </thead>
 
-  @foreach($houses as $key=>$house)
+  @foreach($houses as $house)
 
   <tbody>
     <tr>
-      <th scope="row">{{$key+1}}</th>
+      <th scope="row">{{$house->id}}</th>
       <td>{{$house->house_name}}</td>
       <td>{{$house->house_owner_name}}</td>
       <td>{{$house->house_address}}</td>

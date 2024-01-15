@@ -113,7 +113,7 @@ class HouseController extends Controller
             'flat_number' => 'required',
             'total_bedroom' => 'required',
             'total_bathroom' => 'required',
-            'rent_amount' => 'required',
+            'rent_amount' => 'required|min:0',
             'category' => 'required',
             'available_date' => 'required',
             'image' => 'required'

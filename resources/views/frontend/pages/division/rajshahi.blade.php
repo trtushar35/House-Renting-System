@@ -22,7 +22,7 @@
     </div>
 </div>
 
-<h2>Search result for : {{ request()->search }} found {{$houses->count()}} houses.</h2>
+<h2>Found {{$houses->count()}} @if($houses->count()>0)houses @else house @endif.</h2>
 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
     @if($houses->count()>0)

@@ -1,10 +1,11 @@
 @extends('frontend.partial.other')
 @section('content')
 
-<div class="container col-md-8">
+<div class="container col-md-10">
     <div class="col">
         <div class="row">
-            <h1>Given Review</h1>
+            <h1>Review List</h1>
+            @if(count($reviews) > 0)
             <table class="table table-bordered">
                 <tr>
                     <th scope="col">Serial </th>
@@ -24,6 +25,9 @@
                 </tbody>
                 @endforeach
             </table>
+            @else
+                <h4>No review given.</h4>
+            @endif
         </div>
     </div>
 </div>

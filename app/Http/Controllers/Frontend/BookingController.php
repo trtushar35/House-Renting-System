@@ -27,9 +27,8 @@ class BookingController extends Controller
         $existingBooking = Booking::where('user_id', $userId)->where('house_id', $houseId)->first();
 
         if ($existingBooking && $existingBooking->status == 'Booking Cancelled') {
-            $existingBooking->create([
-                'user_id' => auth()->user()->id,
-                'house_id' => $houseId,
+            $existingBooking->update([
+                'status' => 'pending',
                 'message' => $request->message,
                 'transaction_id' => date('YmdHis'),
                 'payment_status' => 'pending',

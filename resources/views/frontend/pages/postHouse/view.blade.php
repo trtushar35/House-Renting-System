@@ -15,8 +15,10 @@
       <th scope="col">House Address</th>
       <th scope="col">Floor Number</th>
       <th scope="col">Flat Number</th>
+      <th scope="col">Rent Amount</th>
       <th scope="col">Message</th>
       <th scope="col">Status</th>
+      <th scope="col">Payment</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
@@ -30,8 +32,10 @@
       <td>{{$applicant->house->house_address}}</td>
       <td>{{$applicant->house->floor_number}}</td>
       <td>{{$applicant->house->flat_number}}</td>
+      <td>{{$applicant->house->rent_amount}}</td>
       <td>{{$applicant->message}}</td>
       <td>{{$applicant->status}}</td>
+      <td>{{$applicant->payment_status}}</td>
       @if($applicant->status=='pending')
       <td>      
         <a class="btn btn-success" href="{{route('applicant.approve', $applicant->id)}}">Accept</a>

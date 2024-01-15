@@ -11,9 +11,30 @@
             <div class="col-md-6">
                 <div class="card" style="width:700px">
                     <div class="m-5">
-                        @foreach (explode('|', $singleHouse->house->image) as $image)
-                        <img class="card-img-top" style="width: 600px;" src="{{url('/uploads/'.trim($image))}}" alt="Card image">
-                        @endforeach
+                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                @if($singleHouse->house->image)
+                                @foreach (explode('|', $singleHouse->house->image) as $key => $image)
+                                <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+                                    <img class="d-block" style="height: 400px; width:100%;" src="{{ url('/uploads/' . trim($image)) }}" alt="Image {{ $key + 1 }}">
+                                </div>
+                                @endforeach
+                                @else
+                                <img class="d-block" style="height: 400px; width:100%;" src="{{ url('/uploads/noimage.jpg') }}" alt="Image">
+                                @endif
+                            </div>
+                            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"> </span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
                     </div>
                     <div class="card-body">
                         <hr>
@@ -42,10 +63,34 @@
                         <h6 class="card-text">Rent Amount: BDT- {{$singleHouse->house->rent_amount}}</h6>
                         <hr>
                         <div class="d-flex">
-                            <a class="btn btn-outline-dark flex-shrink-0" type="button" href="{{route('book.now', $singleHouse->id)}}">
+                            <button class="btn btn-outline-dark ms-3 flex-shrink-0" type="button" data-toggle="modal" data-target="#exampleModalCenter">
                                 <i class="bi bi-bookmark-check-fill"></i>
                                 Book Now
-                            </a>
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Note</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <form action="{{ route('book.now', $singleHouse->id) }}" method="post">
+                                            @csrf
+                                            <div class="modal-body">
+                                                <textarea class="form-control" rows="3" placeholder="Note (Optional)" name="message"></textarea>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Book Now</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

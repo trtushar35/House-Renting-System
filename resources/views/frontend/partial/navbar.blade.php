@@ -20,14 +20,10 @@
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Property List</a>
                             <div class="dropdown-menu rounded-0 m-0">
                                 <a href="{{route('browse.all.property')}}" class="dropdown-item">All Property List</a>
-                                <a href="#" class="dropdown-item">Dhaka Division</a>
-                                <a href="#" class="dropdown-item">Barisal Division</a>
-                                <a href="#" class="dropdown-item">Chittagong Division</a>
-                                <a href="#" class="dropdown-item">Khulna Division</a>
-                                <a href="#" class="dropdown-item">Mymensingh Division</a>
-                                <a href="#" class="dropdown-item">Rajshahi Division</a>
-                                <a href="#" class="dropdown-item">Rangpur Division</a>
-                                <a href="#" class="dropdown-item">Sylhet Division</a>
+                                <a href="{{route('dhaka.division')}}" class="dropdown-item">Dhaka Division</a>
+                                <a href="{{route('khulna.division')}}" class="dropdown-item">Khulna Division</a>
+                                <a href="{{route('mymensingh.division')}}" class="dropdown-item">Mymensingh Division</a>
+                                <a href="{{route('rajshahi.division')}}" class="dropdown-item">Rajshahi Division</a>
                             </div>
                         </div>
                         <a href="{{route('about')}}" class="nav-item nav-link">About Us</a>

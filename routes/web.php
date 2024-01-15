@@ -42,6 +42,10 @@ use App\Http\Controllers\Frontend\TenantController as FrontendTenantController;
 Route::get('/', [FrontendHomeController::class, 'home'])->name('home');
 Route::get('/search-house', [FrontendHomeController::class, 'search'])->name('house.search');
 Route::get('/browse-all/property', [FrontendHomeController::class, 'browseAllProperty'])->name('browse.all.property');
+Route::get('/dhaka-division/property', [FrontendHomeController::class, 'dhaka'])->name('dhaka.division');
+Route::get('/mymensingh-division/property', [FrontendHomeController::class, 'mymensingh'])->name('mymensingh.division');
+Route::get('/khulna-division/property', [FrontendHomeController::class, 'khulna'])->name('khulna.division');
+Route::get('/rajshahi-division/property', [FrontendHomeController::class, 'rajshahi'])->name('rajshahi.division');
 
 Route::get('/about-us', [FrontendHomeController::class, 'aboutUs'])->name('about');
 
@@ -136,7 +140,6 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('/users/view/{id}', [UserController::class, 'view'])->name('users.view');
             Route::get('/users/print', [UserController::class, 'print'])->name('users.print');
 
-
             Route::get('/tenant/list', [TenantController::class, 'list'])->name('tenant.list');
             Route::get('/tenant/addNew', [TenantController::class, 'addNew'])->name('tenant.addNew');
             Route::post('/tenant/store/', [TenantController::class, 'store'])->name('tenant.store');
@@ -179,6 +182,9 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('/flat/list', [FlatController::class, 'list'])->name('flat.list');
             Route::get('/flat/view/{house_id}', [FlatController::class, 'view'])->name('flat.view');
             Route::get('/flat/print', [FlatController::class, 'flatPrint'])->name('flat.print');
+
+            Route::get('/contacts/list', [FlatController::class, 'contact'])->name('contacts.list');
+            Route::get('/contacts/delete/{id}', [FlatController::class, 'delete'])->name('contacts.delete');
         });
     });
 });

@@ -58,7 +58,11 @@
               @endforeach
               @endif
             </td>
+            @if($house->status=='Approved' && $house->payment_status=='confirm')
+            <td>Booked</td>
+            @else
             <td>{{$house->status}}</td>
+            @endif
             <td>
               <div class="row">
                 <div class="col">
