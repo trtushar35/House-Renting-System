@@ -39,78 +39,82 @@ use App\Http\Controllers\Frontend\TenantController as FrontendTenantController;
 
 
 // frontend routes
-Route::get('/', [FrontendHomeController::class, 'home'])->name('home');
-Route::get('/search-house', [FrontendHomeController::class, 'search'])->name('house.search');
-Route::get('/browse-all/property', [FrontendHomeController::class, 'browseAllProperty'])->name('browse.all.property');
-Route::get('/dhaka-division/property', [FrontendHomeController::class, 'dhaka'])->name('dhaka.division');
-Route::get('/mymensingh-division/property', [FrontendHomeController::class, 'mymensingh'])->name('mymensingh.division');
-Route::get('/khulna-division/property', [FrontendHomeController::class, 'khulna'])->name('khulna.division');
-Route::get('/rajshahi-division/property', [FrontendHomeController::class, 'rajshahi'])->name('rajshahi.division');
+Route::group(['middleware' => 'locale'], function () {
 
-Route::get('/about-us', [FrontendHomeController::class, 'aboutUs'])->name('about');
+    Route::get('/', [FrontendHomeController::class, 'home'])->name('home');
+    Route::get('/change-lang/{locale}', [FrontendHomeController::class, 'changeLang'])->name('change.lang');
+    Route::get('/search-house', [FrontendHomeController::class, 'search'])->name('house.search');
+    Route::get('/browse-all/property', [FrontendHomeController::class, 'browseAllProperty'])->name('browse.all.property');
+    Route::get('/dhaka-division/property', [FrontendHomeController::class, 'dhaka'])->name('dhaka.division');
+    Route::get('/mymensingh-division/property', [FrontendHomeController::class, 'mymensingh'])->name('mymensingh.division');
+    Route::get('/khulna-division/property', [FrontendHomeController::class, 'khulna'])->name('khulna.division');
+    Route::get('/rajshahi-division/property', [FrontendHomeController::class, 'rajshahi'])->name('rajshahi.division');
 
-Route::get('/registration-form', [FrontendTenantController::class, 'registration'])->name('tenant.registration');
-Route::post('/regform-store', [FrontendTenantController::class, 'store'])->name('tenant.regform.store');
+    Route::get('/about-us', [FrontendHomeController::class, 'aboutUs'])->name('about');
 
-Route::get('/login', [FrontendTenantController::class, 'login'])->name('tenant.login');
-Route::post('/login', [FrontendTenantController::class, 'dologin'])->name('tenant.do.login');
+    Route::get('/registration-form', [FrontendTenantController::class, 'registration'])->name('tenant.registration');
+    Route::post('/regform-store', [FrontendTenantController::class, 'store'])->name('tenant.regform.store');
 
-Route::get('/single-house/{id}', [FrontendHouseController::class, 'singleHouseView'])->name('single.house');
+    Route::get('/login', [FrontendTenantController::class, 'login'])->name('tenant.login');
+    Route::post('/login', [FrontendTenantController::class, 'dologin'])->name('tenant.do.login');
 
-Route::get('/contact-us', [FrontendHomeController::class, 'contactUs'])->name('contact.us');
-Route::post('/contact-us/store', [FrontendHomeController::class, 'store'])->name('contact.us.store');
-Route::get('/privacy-policy', [FrontendHomeController::class, 'privacyPolicy'])->name('privacy.policy');
-Route::get('/terms-conditions', [FrontendHomeController::class, 'terms'])->name('terms.condition');
+    Route::get('/single-house/{id}', [FrontendHouseController::class, 'singleHouseView'])->name('single.house');
 
-Route::group(['middleware' => 'checkUser'], function () {
+    Route::get('/contact-us', [FrontendHomeController::class, 'contactUs'])->name('contact.us');
+    Route::post('/contact-us/store', [FrontendHomeController::class, 'store'])->name('contact.us.store');
+    Route::get('/privacy-policy', [FrontendHomeController::class, 'privacyPolicy'])->name('privacy.policy');
+    Route::get('/terms-conditions', [FrontendHomeController::class, 'terms'])->name('terms.condition');
 
-    Route::get('/logout', [FrontendTenantController::class, 'logout'])->name('tenant.logout');
+    Route::group(['middleware' => 'checkUser'], function () {
 
-    Route::get('/add/property', [FrontendHouseController::class, 'createProperty'])->name('add.property');
-    Route::post('/store/property', [FrontendHouseController::class, 'storeProperty'])->name('store.property');
-    Route::get('/post-house/list/{id}', [FrontendHouseController::class, 'houseList'])->name('post.house.list');
-    Route::get('/post-house/edit/{id}', [FrontendHouseController::class, 'houseEdit'])->name('post.house.edit');
-    Route::post('/post-house/update/{id}', [FrontendHouseController::class, 'houseUpdate'])->name('post.house.update');
-    Route::get('/post-house/delete/{id}', [FrontendHouseController::class, 'delete'])->name('post.house.delete');
+        Route::get('/logout', [FrontendTenantController::class, 'logout'])->name('tenant.logout');
 
-    Route::get('/profile/view', [FrontendTenantController::class, 'profile'])->name('profile.view');
-    Route::get('/edit-profile/{id}', [FrontendTenantController::class, 'editProfile'])->name('edit.profile');
-    Route::put('/update-profile/{id}', [FrontendTenantController::class, 'updateProfile'])->name('update.profile');
+        Route::get('/add/property', [FrontendHouseController::class, 'createProperty'])->name('add.property');
+        Route::post('/store/property', [FrontendHouseController::class, 'storeProperty'])->name('store.property');
+        Route::get('/post-house/list/{id}', [FrontendHouseController::class, 'houseList'])->name('post.house.list');
+        Route::get('/post-house/edit/{id}', [FrontendHouseController::class, 'houseEdit'])->name('post.house.edit');
+        Route::post('/post-house/update/{id}', [FrontendHouseController::class, 'houseUpdate'])->name('post.house.update');
+        Route::get('/post-house/delete/{id}', [FrontendHouseController::class, 'delete'])->name('post.house.delete');
 
-    Route::get('/profile/booking-list/{id}', [FrontendTenantController::class, 'bookingList'])->name('bookingList.profile');
-    Route::get('/profile/booking-list/print/{id}', [FrontendTenantController::class, 'print'])->name('bookingList.print');
-    Route::post('/book-now/{house_id}', [FrontendBookingController::class, 'booking'])->name('book.now');
-    Route::get('/advanced-payment/{id}', [FrontendBookingController::class, 'payment'])->name('payment.now');
-    Route::get('/book-cancel/{house_id}', [FrontendBookingController::class, 'cancelBooking'])->name('cancel.book');
+        Route::get('/profile/view', [FrontendTenantController::class, 'profile'])->name('profile.view');
+        Route::get('/edit-profile/{id}', [FrontendTenantController::class, 'editProfile'])->name('edit.profile');
+        Route::put('/update-profile/{id}', [FrontendTenantController::class, 'updateProfile'])->name('update.profile');
 
-    Route::get('applicant/list/{id}', [FrontendApplicantController::class, 'applicantList'])->name('list.applicant');
-    Route::get('/applicant/view/{id}', [FrontendApplicantController::class, 'view'])->name('applicant.view');
-    Route::get('/applicant/approve/{id}', [FrontendApplicantController::class, 'approve'])->name('applicant.approve');
-    Route::get('/applicant/reject/{id}', [FrontendApplicantController::class, 'reject'])->name('applicant.do.reject');
+        Route::get('/profile/booking-list/{id}', [FrontendTenantController::class, 'bookingList'])->name('bookingList.profile');
+        Route::get('/profile/booking-list/print/{id}', [FrontendTenantController::class, 'print'])->name('bookingList.print');
+        Route::post('/book-now/{house_id}', [FrontendBookingController::class, 'booking'])->name('book.now');
+        Route::get('/advanced-payment/{id}', [FrontendBookingController::class, 'payment'])->name('payment.now');
+        Route::get('/book-cancel/{house_id}', [FrontendBookingController::class, 'cancelBooking'])->name('cancel.book');
 
-    Route::get('/saved/favorite/list/{id}', [FrontendFavoriteController::class, 'favoriteList'])->name('favorite.list.view');
-    Route::get('/add-to-favorite/list/{house_id}', [FrontendFavoriteController::class, 'addFavoriteList'])->name('addTofavorite.list');
-    Route::get('/favoriteList-single-house/{id}', [FrontendFavoriteController::class, 'singleView'])->name('single.house.view');
-    Route::get('/favoriteList-single-house/delete/{id}', [FrontendFavoriteController::class, 'delete'])->name('favoriteList.single.delete');
+        Route::get('applicant/list/{id}', [FrontendApplicantController::class, 'applicantList'])->name('list.applicant');
+        Route::get('/applicant/view/{id}', [FrontendApplicantController::class, 'view'])->name('applicant.view');
+        Route::get('/applicant/approve/{id}', [FrontendApplicantController::class, 'approve'])->name('applicant.approve');
+        Route::get('/applicant/reject/{id}', [FrontendApplicantController::class, 'reject'])->name('applicant.do.reject');
 
-    Route::get('/give/review', [FrontendReviewController::class, 'review'])->name('review');
-    Route::post('/store/review', [FrontendReviewController::class, 'storeReview'])->name('store.review');
-    Route::get('/review/list/{id}', [FrontendReviewController::class, 'reviewList'])->name('review.list');
-    Route::get('/review/delete/{id}', [FrontendReviewController::class, 'reviewDelete'])->name('review.delete');
-    Route::get('/review/edit/{id}', [FrontendReviewController::class, 'reviewEdit'])->name('review.edit');
-    Route::post('/review/update/{id}', [FrontendReviewController::class, 'reviewUpdate'])->name('review.update');
+        Route::get('/saved/favorite/list/{id}', [FrontendFavoriteController::class, 'favoriteList'])->name('favorite.list.view');
+        Route::get('/add-to-favorite/list/{house_id}', [FrontendFavoriteController::class, 'addFavoriteList'])->name('addTofavorite.list');
+        Route::get('/favoriteList-single-house/{id}', [FrontendFavoriteController::class, 'singleView'])->name('single.house.view');
+        Route::get('/favoriteList-single-house/delete/{id}', [FrontendFavoriteController::class, 'delete'])->name('favoriteList.single.delete');
 
-    Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
-    Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+        Route::get('/give/review', [FrontendReviewController::class, 'review'])->name('review');
+        Route::post('/store/review', [FrontendReviewController::class, 'storeReview'])->name('store.review');
+        Route::get('/review/list/{id}', [FrontendReviewController::class, 'reviewList'])->name('review.list');
+        Route::get('/review/delete/{id}', [FrontendReviewController::class, 'reviewDelete'])->name('review.delete');
+        Route::get('/review/edit/{id}', [FrontendReviewController::class, 'reviewEdit'])->name('review.edit');
+        Route::post('/review/update/{id}', [FrontendReviewController::class, 'reviewUpdate'])->name('review.update');
 
-    Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
-    Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+        Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
+        Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
 
-    Route::post('/success', [SslCommerzPaymentController::class, 'success']);
-    Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
-    Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+        Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+        Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
 
-    Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+        Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+        Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+        Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+        Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+    });
 });
 
 

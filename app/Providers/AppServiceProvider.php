@@ -32,5 +32,13 @@ class AppServiceProvider extends ServiceProvider
             $reviewRatings=Review::all();
             View::share('reviewRatings', $reviewRatings );
         }
+
+        // if(session()->has('locale')){
+        //     $current_local=session()->get('locale');
+        // }else{
+        //     $current_local='en';
+        // }
+
+        // View::share('current_local',$current_local);
     }
 }

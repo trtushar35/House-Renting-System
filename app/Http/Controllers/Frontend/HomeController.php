@@ -116,4 +116,11 @@ class HomeController extends Controller
         // dd($dhaka);
         return view('frontend.pages.division.rajshahi', compact('houses'));
     }
+
+    public function changeLang($locale)
+    {
+        app()->setlocale($locale);
+        session()->put('locale',$locale);
+        return redirect()->route('home');
+    }
 }
