@@ -1,30 +1,31 @@
 <?php
 
-use App\Http\Controllers\Backend\ApplicantController;
 use GuzzleHttp\Middleware;
-
-
-
 use Illuminate\Support\Facades\Route;
+
+
+
 use App\Http\Controllers\Backend\FlatController;
 use App\Http\Controllers\Backend\homeController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\HouseController;
+use App\Http\Controllers\Frontend\MailController as FrontendMailController;
 use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\TenantController;
 use App\Http\Controllers\Backend\PaymentController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\ComplainController;
+use App\Http\Controllers\Backend\ApplicantController;
 use App\Http\Controllers\Backend\HouseOwnerController;
 use App\Http\Controllers\Backend\Review_RatingController;
-use App\Http\Controllers\Frontend\ApplicantController as FrontendApplicantController;
-use App\Http\Controllers\Frontend\ReviewController as FrontendReviewController;
-use App\Http\Controllers\Frontend\BookingController as FrontendBookingController;
-use App\Http\Controllers\Frontend\FavoriteController as FrontendFavoriteController;
+use App\Http\Controllers\Frontend\SslCommerzPaymentController;
 use App\Http\Controllers\Frontend\HomeController as FrontendHomeController;
 use App\Http\Controllers\Frontend\HouseController as FrontendHouseController;
-use App\Http\Controllers\Frontend\SslCommerzPaymentController;
+use App\Http\Controllers\Frontend\ReviewController as FrontendReviewController;
 use App\Http\Controllers\Frontend\TenantController as FrontendTenantController;
+use App\Http\Controllers\Frontend\BookingController as FrontendBookingController;
+use App\Http\Controllers\Frontend\FavoriteController as FrontendFavoriteController;
+use App\Http\Controllers\Frontend\ApplicantController as FrontendApplicantController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,8 +56,19 @@ Route::group(['middleware' => 'locale'], function () {
     Route::get('/registration-form', [FrontendTenantController::class, 'registration'])->name('tenant.registration');
     Route::post('/regform-store', [FrontendTenantController::class, 'store'])->name('tenant.regform.store');
 
+    Route::get('/send/otp', [FrontendTenantController::class, 'sendOtp'])->name('send.otp');
+    Route::get('/otp/form', [FrontendTenantController::class, 'otpForm'])->name('otp.form');
+    Route::post('/otp/verify', [FrontendTenantController::class, 'otpVerify'])->name('otp.verify');
+
     Route::get('/login', [FrontendTenantController::class, 'login'])->name('tenant.login');
     Route::post('/login', [FrontendTenantController::class, 'dologin'])->name('tenant.do.login');
+
+    Route::get('/forgot-Password', [FrontendTenantController::class,'forgotPassword'])->name('tenant.forgotPassword');
+    Route::post('/link-send', [FrontendTenantController::class,'sendLink'])->name('send.link');
+
+    Route::get('/reset-password/{token}', [FrontendTenantController::class, 'resetPassword'])->name('reset.password');
+    Route::post('/update-password/{token}', [FrontendTenantController::class,'updatePassword'])->name('update.password');
+
 
     Route::get('/single-house/{id}', [FrontendHouseController::class, 'singleHouseView'])->name('single.house');
 
@@ -64,6 +76,8 @@ Route::group(['middleware' => 'locale'], function () {
     Route::post('/contact-us/store', [FrontendHomeController::class, 'store'])->name('contact.us.store');
     Route::get('/privacy-policy', [FrontendHomeController::class, 'privacyPolicy'])->name('privacy.policy');
     Route::get('/terms-conditions', [FrontendHomeController::class, 'terms'])->name('terms.condition');
+
+    Route::get('send/mail', [FrontendMailController::class, 'sendMail'])->name('send.mail');
 
     Route::group(['middleware' => 'checkUser'], function () {
 

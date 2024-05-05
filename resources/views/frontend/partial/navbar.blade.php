@@ -31,6 +31,7 @@
                 @guest
                 <a href="{{route('tenant.login')}}" class="nav-item nav-link">Login</a>
                 <a href="{{route('tenant.registration')}}" id="#registration" class="nav-item nav-link">Registration</a>
+                <a href="{{route('send.mail')}}" id="" class="nav-item nav-link">Contact</a>
                 @endguest
 
                 <select onchange="window.location.href=this.value;" name="" id="" style="width: min-content; height:20px;margin-top:22px;">

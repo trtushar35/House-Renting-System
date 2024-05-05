@@ -1,7 +1,6 @@
 <html>
 
 <head>
-  @notifyCss
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
   <title>Login</title>
@@ -17,25 +16,18 @@
 <body>
 
   <div class="login-dark" style="height: 695px;">
-    <form action="{{route('tenant.do.login')}}" method="post">
+    <form action="{{route('send.link')}}" method="post">
       @csrf
-      <h2 class="sr-only">Login Form</h2>
+      <h2 class="sr-only"></h2>
       <div class="illustration">
-        <a href="{{route('home')}}">
-          <img src="{{url('frontend/')}}/img/icon-deal.png" alt="">
-        </a>
-        <h1 class="m-0 text-white">House Rent</h1>
+        <h1 class="m-0 text-white">Password Reset</h1>
       </div>
       <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email" required></div>
-      <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" required></div>
-      <div class="form-group"><button class="btn btn-success btn-block">Log In</button></div>
-      <a href="{{route('tenant.forgotPassword')}}"><h6>Forget Password?</h6></a>
-      <a href="{{route('tenant.registration')}}"><h6>Create New Account?</h6></a>
+      <div class="form-group"><button class="btn btn-success btn-block">Send</button></div>
     </form>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-  @notifyJs
 </body>
 
 </html>

@@ -19,9 +19,12 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('address');
             $table->string('image')->nullable();
+            $table->integer('otp')->unique();
+            $table->boolean('is_verified')->default(false);
+            $table->dateTime('otp_expired_at')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken();
+            $table->string('rememberToken')->nullable();
             $table->timestamps();
         });
     }

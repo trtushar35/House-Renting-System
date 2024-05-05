@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Mail\link;
+use Carbon\Carbon;
 use App\Models\User;
+use App\Mail\sendOtp;
+use App\Mail\testMail;
 use App\Models\Booking;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -13,19 +19,15 @@ class TenantController extends Controller
 {
     public function registration()
     {
-
         return view('frontend.pages.registration');
-
         // return redirect()->route('');
-
     }
 
 
     public function store(Request $request)
     {
-
         // dd($request->all());
-
+        $otp = rand(10000, 99999);
         User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -33,11 +35,48 @@ class TenantController extends Controller
             'address' => $request->address,
             'role' => $request->role,
             'password' => bcrypt($request->password),
+            'otp' => $otp,
+            'otp_expired_at' => Carbon::now()->addMinute(5)
         ]);
 
-        // dd('hi');
+        Mail::to($request->email)->send(new sendOtp($otp));
+
         notify()->success('Customer Registration successful.');
-        return redirect()->route('tenant.login');
+        return redirect()->route('otp.form');
+    }
+
+    public function otpForm()
+    {
+        return view('frontend.pages.mail.otpForm');
+    }
+
+    public function otpVerify(Request $request)
+    {
+
+        $request->validate([
+            'otp' => 'required|numeric',
+        ]);
+
+        $code = $request->otp;
+        $user = User::where('otp', $code)->first();
+
+        if ($user) {
+            //if otp is expired
+            if (Carbon::now()->gt($user->otp_expired_at)) {
+                notify()->error('OTP Expired');
+                return redirect()->route('otp.form');
+            }
+
+            //otp is valid and not expired
+            $user->is_verified = true;
+            $user->save();
+
+            notify()->success('Verified successful, you can login now.');
+            return redirect()->route('tenant.login');
+        } else {
+            //invalid otp 
+            return redirect()->back()->with('error', 'Invalid OTP. Please try again.');
+        }
     }
 
     public function login()
@@ -66,6 +105,15 @@ class TenantController extends Controller
 
         if (auth()->attempt($credentials)) {
             // dd($credentials);
+            $user = auth()->user();
+            if ($user->is_verified) {
+                notify()->success('Login Successfully.');
+                return redirect()->route('home');
+            } else {
+                auth()->logout();
+                notify()->error('Please verify your email first.');
+                return redirect()->route('otp.form');
+            }
 
             notify()->success('Login Successfully.');
             return redirect()->route('home');
@@ -73,6 +121,66 @@ class TenantController extends Controller
 
         notify()->error('Invalid Credentials.');
         return redirect()->back();
+    }
+
+    public function forgotPassword()
+    {
+        return view('frontend.pages.forgetPassword');
+    }
+
+    public function sendLink(Request $request)
+    {
+
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            notify()->error('Email Not found.');
+            return redirect()->back();
+        }
+
+        $token = Str::random(120);
+
+        Mail::to($request->email)->send(new link($token));
+
+        $user->update([
+            'rememberToken' => $token
+        ]);
+
+        return "Link is sent successfully.";
+    }
+
+    public function resetPassword($token)
+    {
+        $token = $token;
+        return view('frontend.pages.resetPassword',compact('token'));
+    }
+
+    public function updatePassword(Request $request, $token)
+    {
+        // dd($request->all(), $token);
+        $validation = Validator::make($request->all(), [
+            'new_password' => 'required|string|min:6|confirmed',
+        ]);
+
+        if ($validation->fails()) {
+            return redirect()->back()->withErrors($validation)->withInput();
+        }
+
+        $user = User::where('rememberToken', $token )->first();
+        // dd($user);
+
+        if (!$user) {
+            notify()->error('Invalid token.');
+            return redirect()->back();
+        }
+
+        $user->update([
+            'password' => bcrypt($request->new_password)
+        ]);
+        $user->rememberToken = null;
+        $user->save();
+
+        return redirect()->route('tenant.login')->with('success', 'Password updated successfully.');
     }
 
     public function profile()
